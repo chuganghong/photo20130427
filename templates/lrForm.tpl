@@ -9,4 +9,4 @@ Password:
 <input type="submit" value="{$value}" />
 </form>
 
-{include file="footer.tpl"}
+{* {include file="footer.tpl"} *}

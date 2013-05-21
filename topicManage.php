@@ -39,11 +39,4 @@ $smarty->assign('trTd',$data);
 $th = array('编号','栏目名称','操作');
 $smarty->assign('th',$th);
 
-$td_1 = array('id'=>1,'topic'=>'清纯美女','operation'=>'删除');
-$td_2 = array('id'=>2,'topic'=>'性感美女','operation'=>'删除');
-$trTd = array($td_1,$td_2);
-//$trTd = array();//test
-//$smarty->assign('trTd',$trTd);
-
-
 $smarty->display('topicManage.tpl');

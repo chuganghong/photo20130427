@@ -75,13 +75,19 @@ class upload
 			if( !$result )
 			{
 				$msg = '文件太大了。';
-				die($msg);
+				$js = $this->js();
+				$mj = $msg . $js;
+				die($mj);
 			}
 		}
 		else
 		{
 			$msg = '不支持此种文件上传。';
-			die($msg);
+			//die($msg);
+			$js = $this->js();
+			$mj = $msg . $js;
+			die($mj);
+			
 		}
 		
 	}
@@ -111,6 +117,15 @@ class upload
 			echo $msg;
 			return false;
 		}
+		
+	}
+	
+	function js()
+	{
+		$tip = '即将返回上一页。';
+		$js = '<script>setTimeout("history.go(-1)",2000);</script>';
+		//echo $tip . $js;
+		return $tip . $js;
 		
 	}
 	

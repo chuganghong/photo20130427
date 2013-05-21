@@ -23,8 +23,9 @@ else if( $which=='edit' )
 	//编辑栏目
 	
 	$id = $_GET['id'];
+	var_dump($id);   //test
 	$idName = explode('=>',$id);
-	//var_dump($idName);  //test
+	var_dump($idName);  //test
 	$id = $idName[0];
 	$topicName = $idName[1];
 	$smarty->assign('which',$which);

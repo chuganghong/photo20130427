@@ -50,28 +50,30 @@ function chose(id)
 	}
 }
 
-function edit(editUrl)
+function edit(editUrl)    //要实现这样的功能，当全选后再点击“编辑”，只对第一个进行编辑。//问题很多，搞不懂！！烦！
 {
 	var result = isGo();
+	//alert(result);   //test////这个对话框为何不在运行中弹出？
 	if( result )  //点击编辑、新建等链接时触发
-	{
+	{		
 		var url = editUrl + "?which=edit&id=" + result;
-		alert(url);  //test
+		//alert(url);  //test////这个对话框为何不在运行中弹出？
 		location.href = url;
 	}
 	else
 	{
 		//do nothing
+		alert(0);  //test
 	}
 }
 
 function _delete(url)   //没有使用，不知是否正确
 {
 	var result = isGo();
-	if( result )
+	if( result )   //result是什么？此刻我竟然看不懂之前自己写的代码，这说明：写注释非常必要！
 	{
 		var url = url + "?which=delete&id=" + result;
-		alert(url);  //test
+		//alert(url);  //test////这个对话框为何不在运行中弹出？
 		location.href = url;
 	}
 }
@@ -184,10 +186,12 @@ function isCheck()   //检测是否选中了至少一个checkbox
 	{
 		if( inputs[i].type == "checkbox" )
 		{
-			if( inputs[i].checked == true )
+			//continue;
+			if( inputs[i].checked == true  )
 			{
 				//return true;
 				var value = inputs[i].value;
+				alert(value);  //test
 				return value;
 			}
 		}
@@ -206,6 +210,8 @@ function isGo()   //点击编辑、新建等链接时触发
 	}
 	else
 	{
+		
+		//alert(5);  //test//这个对话框为何不在运行中弹出？
 		return result;
 	}
 }

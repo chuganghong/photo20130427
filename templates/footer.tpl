@@ -1,2 +1,3 @@
+{$copyRight}
 </body>
 </html>

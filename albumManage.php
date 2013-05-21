@@ -13,13 +13,6 @@ $smarty->assign('deleteUrl',$deleteUrl);
 
 $th = array('ID','图集名称','操作');
 
-/*
-$con = mysql_connect('localhost','root','') or die('Could not connect:' . mysql_error());
-mysql_select_db('picture',$con) or die('Could not use picture:' . mysql_error());
-mysql_query('SET NAMES UTF8');
-$sql = "SELECT * FROM album";
-$resource = mysql_query($sql,$con);
-*/
 $sql = "SELECT * FROM album";
 $resource = $db->_query($sql);
 while( $row = mysql_fetch_assoc($resource) )

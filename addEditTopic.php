@@ -48,8 +48,12 @@ if( $which=='add' )
 }
 else if( $which=='edit' )
 {
-	//编辑栏目
+	//编辑栏目	
 	$topicId = _filter($_POST['topicId']);
+	if( is_array($topicId) )
+	{
+		$topicId = $topicId[0];//若是全选了，设置为只处理第一个
+	}
 	$sql = "UPDATE topic SET topicName='$topicName' WHERE id=$topicId";
 	$result = $db->_query($sql);
 	$rows = mysql_affected_rows();

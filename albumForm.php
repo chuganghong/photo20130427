@@ -16,11 +16,11 @@ while( $row = mysql_fetch_assoc($result) )
 	$topicName[$row['id']] = $row['topicName'];
 }
 
-//$topicName = array(1=>'美女',2=>'帅哥');
+
 
 
 $smarty->assign('topicName',$topicName);
-//$smarty->assign('topicId',$topicId);
+
 
 if( $which=='add' )
 {
@@ -56,22 +56,14 @@ else if( $which=='edit' )
 	$thumbUrl = $values[2];   //暂不使用
 	$albumId = $values[3];
 	
-	//$sql = "SELECT * FROM album WHERE id=$albumId";
-	//$result = $db->_query($sql);
-	//$row = mysql_fetch_assoc($result);
-	//$thum
-	
-	
+		
 	$action = 'addEditAlbum.php';
 	$value = '更新';
-	//$src = 'http://www.166122.com/upload//20121029/20121029134225221.jpg';
-	//$src = $thumbUrl;
-	
-	
+		
 	$smarty->assign('action',$action);
 	$smarty->assign('value',$value);
 	$smarty->assign('which',$which);
-	//$smarty->assign('src',$src);
+	
 	
 	$smarty->assign('thumbUrl',$thumbUrl);
 	$smarty->assign('topicId',$topicId);
@@ -79,7 +71,7 @@ else if( $which=='edit' )
 	
 	$smarty->assign('albumId',$albumId);
 	
-	//$smarty->assign('ln','');
+	
 	$smarty->assign('thumbUrl',$thumbUrl);
 }
 

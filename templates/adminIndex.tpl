@@ -6,12 +6,13 @@
 </head>
 
 
-<frameset rows="5%,*">
+<frameset rows="5%,*,5%" >
 	<frame src="adminIndexTop.php">
-	<frameset cols="15%,*">
-		<frame src="adminMenu.php">
+	<frameset cols="15%,*" >
+		<frame src="adminMenu.php" frameborder="0">
 		<frame src="topicManage.php" name="adminIndexRight">
 	</frameset>
+	<frame src="footer.php">
 </frameset>
 
 </html>
