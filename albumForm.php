@@ -25,7 +25,7 @@ $smarty->assign('topicName',$topicName);
 if( $which=='add' )
 {
 	//新增图集
-	$action = 'addEditAlbum.php';
+	$action = 'addAlbum.php';
 	$value = '保存';
 	$src = '';
 	
@@ -44,6 +44,10 @@ if( $which=='add' )
 	
 	$smarty->assign('albumId','');
 	
+	$smarty->assign('isAllow',1);
+	
+	$smarty->display('albumForm.tpl');
+	
 }
 else if( $which=='edit' )
 {
@@ -57,7 +61,7 @@ else if( $which=='edit' )
 	$albumId = $values[3];
 	
 		
-	$action = 'addEditAlbum.php';
+	$action = 'editAlbum.php';
 	$value = '更新';
 		
 	$smarty->assign('action',$action);
@@ -73,6 +77,9 @@ else if( $which=='edit' )
 	
 	
 	$smarty->assign('thumbUrl',$thumbUrl);
+	
+	$smarty->assign('isAllow',0);
+	
+	$smarty->display('albumForm2.tpl');
 }
 
-$smarty->display('albumForm.tpl');

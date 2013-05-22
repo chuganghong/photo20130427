@@ -11,7 +11,7 @@
 <p>
 <table border="1" width="80%">
 	<tr>
-		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)"/></th>
+		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)" value="0" /></th>
 		{section name=th loop=$th}
 		<th>{$th[th]}</th>
 		{/section}

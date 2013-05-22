@@ -16,12 +16,15 @@ function choseNet()   //变为上传网络图片
 	
 }
 
-function noEmpty()   //防止提交空表单
+function noEmpty(isAllow)   //防止提交空表单。当isAllow为0时，此函数什么也不做，满足更新和新建对图片表单的是否为空的不同要求
 {
-	if( document.getElementById("upImage").value == "" )
+	if( isAllow == 1 )
 	{
-		alert("图片地址不能为空！");
-	}
+		if( document.getElementById("upImage").value == "" )
+		{
+			alert("图片地址不能为空！");
+		}
+	}	
 }
 </script>
 <form action="{$action}" method="post" enctype="multipart/form-data">
@@ -33,7 +36,7 @@ function noEmpty()   //防止提交空表单
 <input type="hidden" name="which" value="1" id="which"  />
 <input type="hidden" name="albumId" value="{$albumId}" />
 <br />
-<input type="submit" value="上传" onmouseover="noEmpty()"/>
+<input type="submit" value="上传" onmouseover="noEmpty({$isAllow})"/>
 </form>
 <hr>
 {if $ln == 1 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-04-26 07:52:07
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-22 15:52:31
          compiled from ".\templates\albumManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:66025178eb4bb40944-80090284%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0889ccc8971a964c9f0599f82fc1f0496353f923' => 
     array (
       0 => '.\\templates\\albumManage.tpl',
-      1 => 1366962720,
+      1 => 1369237945,
       2 => 'file',
     ),
   ),
@@ -46,7 +46,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <p>
 <table border="1" width="80%">	
 	<tr>
-		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)" /></th>
+		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)" value="0" /></th>
 		<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['th'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['th']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['th']['name'] = 'th';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['th']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['th']->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -106,7 +106,8 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['last']       = ($_smar
 =><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['thumbUrl'];?>
 =><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
 " /></td>
-			<td><?php echo $_smarty_tpl->getVariable('smarty')->value['section']['td']['index']+1;?>
+			
+			<td><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
 </td>
 			<td><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['albumName'];?>
 </td>

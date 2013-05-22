@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-22 03:20:48
-         compiled from ".\templates\albumForm.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:225325178f5b3be43a3-66732185%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-22 02:51:05
+         compiled from ".\templates\albumForm2.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:21721519b827af312b8-08032602%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '8282fe6722240c75f7bbb6bfa9a3baea7cdbeab8' => 
+    'cede4fba5861af6f714415da1aa1315cd23d6107' => 
     array (
-      0 => '.\\templates\\albumForm.tpl',
-      1 => 1369186511,
+      0 => '.\\templates\\albumForm2.tpl',
+      1 => 1369191053,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '225325178f5b3be43a3-66732185',
+  'nocache_hash' => '21721519b827af312b8-08032602',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5178f5b3ce9ba9_88109898',
+  'unifunc' => 'content_519b827b1351c9_10584880',
   'variables' => 
   array (
     'action' => 0,
@@ -25,12 +25,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'albumName' => 0,
     'which' => 0,
     'albumId' => 0,
-    'isAllow' => 0,
     'thumbUrl' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5178f5b3ce9ba9_88109898')) {function content_5178f5b3ce9ba9_88109898($_smarty_tpl) {?><?php if (!is_callable('smarty_function_html_options')) include 'lib/plugins\\function.html_options.php';
+<?php if ($_valid && !is_callable('content_519b827b1351c9_10584880')) {function content_519b827b1351c9_10584880($_smarty_tpl) {?><?php if (!is_callable('smarty_function_html_options')) include 'lib/plugins\\function.html_options.php';
 ?>
 
 <script type="text/javascript">
@@ -49,18 +48,27 @@ function choseNet()   //变为上传网络图片
 	
 }
 
-function noEmpty(isAllow)   //防止提交空表单
-{	
-	if( isAllow == 0 )
+function isChange()   //识别是否更新了图集的缩略图，1为更新了，0为未更新
+{
+	//alert('start');//test
+	value1 = document.getElementById("upImage").value;
+	//alert(value1);  //test
+	value2 = document.getElementById("changeId").value;
+	if( !value1 )
 	{
-		return;
+		value2 = 0;
+		document.getElementById("changeId").value = value2;
 	}
-	if( document.getElementById("upImage").value == "" )
+	else
 	{
-		alert("图片地址不能为空！");
+		value2 = 1;
+		document.getElementById("changeId").value = value2;
 	}
-}
+	//alert(value2);   //test
+	document.getElementById("tip").innerHTML = value2;//test
+}	
 </script>
+
 <form action="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " method="post" enctype="multipart/form-data">
 选择栏目：
@@ -84,12 +92,12 @@ function noEmpty(isAllow)   //防止提交空表单
 " id="which"  />
 <input type="hidden" name="albumId" value="<?php echo $_smarty_tpl->tpl_vars['albumId']->value;?>
 "  />
-<input type="hidden" name="isEmpty" value="1" id="isEmpty" />
+<input type="hidden" name="change" id="changeId" />
 <br />
-<input type="submit" value="上传" onmouseover="noEmpty(<?php echo $_smarty_tpl->tpl_vars['isAllow']->value;?>
-)"/>
+<input type="submit" value="更新" onmouseover="isChange()"/>
 </form>
 <hr>
+<p id="tip"></p>
 
 <?php if ($_smarty_tpl->tpl_vars['which']->value=="edit"){?>
 <img src="<?php echo $_smarty_tpl->tpl_vars['thumbUrl']->value;?>

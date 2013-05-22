@@ -26,7 +26,7 @@ function chose(id)
 	//alert("start chose");//test
 	var inputs = document.getElementsByTagName("input");
 	//alert(inputs.length);//test
-	if( $(id).checked == true )
+	if( $(id).checked == true )	
 	{		
 		//alert("start checked");//test
 		for(var i=0;i<inputs.length;i++)
@@ -54,10 +54,10 @@ function edit(editUrl)    //要实现这样的功能，当全选后再点击“�
 {
 	var result = isGo();
 	//alert(result);   //test////这个对话框为何不在运行中弹出？
-	if( result )  //点击编辑、新建等链接时触发
+	if( result && result !== '0' )  //点击编辑、新建等链接时触发
 	{		
 		var url = editUrl + "?which=edit&id=" + result;
-		//alert(url);  //test////这个对话框为何不在运行中弹出？
+		alert(url);  //test////这个对话框为何不在运行中弹出？
 		location.href = url;
 	}
 	else
@@ -69,7 +69,7 @@ function edit(editUrl)    //要实现这样的功能，当全选后再点击“�
 
 function _delete(url)   //没有使用，不知是否正确
 {
-	var result = isGo();
+	result = isGo();
 	if( result )   //result是什么？此刻我竟然看不懂之前自己写的代码，这说明：写注释非常必要！
 	{
 		var url = url + "?which=delete&id=" + result;
@@ -187,13 +187,21 @@ function isCheck()   //检测是否选中了至少一个checkbox
 		if( inputs[i].type == "checkbox" )
 		{
 			//continue;
+			if( inputs[i].value == '0' )
+			{
+				continue;
+			}
 			if( inputs[i].checked == true  )
 			{
 				//return true;
-				var value = inputs[i].value;
-				alert(value);  //test
-				return value;
+				var value2 = inputs[i].value;
+				alert(value2);  //test
+				return value2;
 			}
+		}
+		else
+		{
+			return;
 		}
 	}
 }
@@ -201,12 +209,12 @@ function isCheck()   //检测是否选中了至少一个checkbox
 function isGo()   //点击编辑、新建等链接时触发
 {
 	//alert("start isGo");  //test
-	var result = isCheck();
+	result = isCheck();
 	if( !result )
 	{
 		//alert("start result");//test
 		alert("请至少选择一个项目进行操作！");
-		return false;
+		return;
 	}
 	else
 	{

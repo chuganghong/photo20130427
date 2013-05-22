@@ -1,40 +1,58 @@
 <?php
 /*
-	编辑、新增图集
+	新增图集
 	2013/04/28修改：
 	1.使用了admin.class.php中的类方法。此页的代码变少了，但是却转移到了admin.class.php中，若此代码不能复用，这么做有何意义？
 	2.将编辑或增加图集之后的提示信息封装到了函数msg中。
+	2013年5月21日修改：
+	1.在编辑图集页面，可以上传缩略图也可以不上传缩略图，但是，为了与上传图片页面共用一个上传图片的模板，我想了很多办法来在公用的上传代码中来实现模板共享，觉得很麻烦，也没有实现功能。
+	今后遇到这种情况，宁可多写一个模板，也不要贪图少写这种无难度的代码。
+	2013年5月22日修改：
+	1.由增加和编辑图集功能改为增加功能
 */
 require_once('include.php');
 $topicId = $_POST['topic'];
 $albumName = $_POST['albumName'];
+$isEmpty = $_POST['isEmpty'];   //识别是否上传了图片
 
 $admin = new admin($db);
 
-if( isset($_POST['image']) )   //上传网络图片
+if( $isEmpty==1 )
 {
-	$thumbUrl = $_POST['image'];
+	if( isset($_POST['image']) )   //上传网络图片
+	{
+		$thumbUrl = $_POST['image'];
+		/*
+		if( isset($_POST['url']) )
+		{
+			//网络图片
+			$cover = _filter($_POST['url']);
+		}
+		*/
+		$cover = $thumbUrl;
+	}
+	else  //上传本地图片
+	{
+		$upload = new upload('image');//实例化图片上传类
+		if( $upload->up() )
+		{
+			$thumbUrl = $upload->getNewName();//调用图片上传类方法获取图片地址
+			$cover = _filter($thumbUrl);
+		}
+		else
+		{
+			die();
+		}
+	}
 }
-else  //上传本地图片
+else if( $isEmpty==0 )
 {
-	$upload = new upload('image');//实例化图片上传类
-	if( $upload->up() )
-	{
-		$thumbUrl = $upload->getNewName();//调用图片上传类方法获取图片地址
-	}
-	else
-	{
-		die();
-	}
+	$cover = '';
 }
 $albumId = $_POST['albumId'];
 VAR_DUMP($_POST);  //TEST
 
-if( isset($_POST['url']) )
-{
-	//网络图片
-	$cover = _filter($_POST['url']);
-}
+
 
 var_dump($_POST['which']);  //test
 $which = _filter($_POST['which']);
@@ -42,7 +60,8 @@ $which = _filter($_POST['which']);
 //过滤数据
 $topicId = _filter($topicId);
 $albumName = _filter($albumName);
-$cover = _filter($thumbUrl);
+
+var_dump($cover);  //test
 $albumId = _filter($albumId);
 
 if( $which == 'add' )
@@ -60,6 +79,7 @@ if( $which == 'add' )
 		msg($boolean,$i,$which,$albumName);		
 	}	
 }
+/*
 else if( $which == 'edit' )
 {
 	
@@ -77,7 +97,7 @@ else if( $which == 'edit' )
 		msg($boolean,$i,$which,$albumName);		
 	}	
 }
-
+*/
 
 function msg($boolean,$i,$which,$albumName)   //增加或编辑图集之后的提示信息
 {

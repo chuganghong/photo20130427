@@ -1,4 +1,4 @@
-{* 图集管理FORM 新建图集、编辑图集*}
+{* 图集管理FORM 编辑图集*}
 
 <script type="text/javascript">
 function choseLocal(id)   //上传本地图片
@@ -16,18 +16,27 @@ function choseNet()   //变为上传网络图片
 	
 }
 
-function noEmpty(isAllow)   //防止提交空表单
-{	
-	if( isAllow == 0 )
+function isChange()   //识别是否更新了图集的缩略图，1为更新了，0为未更新
+{
+	//alert('start');//test
+	value1 = document.getElementById("upImage").value;
+	//alert(value1);  //test
+	value2 = document.getElementById("changeId").value;
+	if( !value1 )
 	{
-		return;
+		value2 = 0;
+		document.getElementById("changeId").value = value2;
 	}
-	if( document.getElementById("upImage").value == "" )
+	else
 	{
-		alert("图片地址不能为空！");
+		value2 = 1;
+		document.getElementById("changeId").value = value2;
 	}
-}
+	//alert(value2);   //test
+	document.getElementById("tip").innerHTML = value2;//test
+}	
 </script>
+
 <form action="{$action}" method="post" enctype="multipart/form-data">
 选择栏目：
 <select name="topic">
@@ -46,11 +55,12 @@ function noEmpty(isAllow)   //防止提交空表单
 
 <input type="hidden" name="which" value="{$which}" id="which"  />
 <input type="hidden" name="albumId" value="{$albumId}"  />
-<input type="hidden" name="isEmpty" value="1" id="isEmpty" />
+<input type="hidden" name="change" id="changeId" />{* 当此处的id和onmouseover的函数同名时，不知为何，JS不能正确运行。*}
 <br />
-<input type="submit" value="上传" onmouseover="noEmpty({$isAllow})"/>
+<input type="submit" value="更新" onmouseover="isChange()"/>
 </form>
 <hr>
+<p id="tip"></p>
 
 {if $which == "edit" }
 <img src="{$thumbUrl}" />

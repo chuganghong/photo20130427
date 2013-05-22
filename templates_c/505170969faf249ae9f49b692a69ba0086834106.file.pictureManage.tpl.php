@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-04-26 06:22:43
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-21 10:01:35
          compiled from ".\templates\pictureManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93795178ed88440be0-23001642%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '505170969faf249ae9f49b692a69ba0086834106' => 
     array (
       0 => '.\\templates\\pictureManage.tpl',
-      1 => 1366957361,
+      1 => 1369130397,
       2 => 'file',
     ),
   ),
@@ -39,7 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <p>
 <table border="1" width="80%">
 	<tr>
-		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)"/></th>
+		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)" value="0" /></th>
 		<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['th'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['th']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['th']['name'] = 'th';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['th']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['th']->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);

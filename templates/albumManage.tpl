@@ -13,16 +13,17 @@
 <p>
 <table border="1" width="80%">	
 	<tr>
-		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)" /></th>
+		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)" value="0" /></th>
 		{section name=th loop=$th}
 		<th>{$th[th]}</th>
 		{/section}
 	</tr>
-	{if $td|@count neq 0}
+	{if $td|@count neq 0}{*这句是什么意思？*}
 		{section name=td loop=$td }
 		<tr>
 			<td><input type="checkbox" name="boxes[]" value="{$td[td].topicId}=>{$td[td].albumName}=>{$td[td].thumbUrl}=>{$td[td].id}" /></td>
-			<td>{$smarty.section.td.index+1}</td>
+			{*<td>{$smarty.section.td.index+1}</td>*}
+			<td>{$td[td].id}</td>
 			<td>{$td[td].albumName}</td>
 			<td><a href="{$uploadUrl}?id={$td[td].id}">上传图片</a></td>
 		</tr>

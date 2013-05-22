@@ -136,6 +136,7 @@ class admin
 	
 	function deleteAlbumData($albumId)    //根据图集ID删除数据库中的图集信息
 	{
+		$albumId = mysql_real_escape_string($albumId);
 		$sql = "DELETE FROM album WHERE id=$albumId";
 		$result = $this->db->_query($sql);
 		$rows = mysql_affected_rows();
@@ -233,11 +234,19 @@ class admin
 	
 	function editAlbum($albumName,$cover,$topicId,$albumId)  //编辑图集
 	{
+		var_dump($cover);   //test
 		//$this->deletePicLocal($cover);   //删除服务器上的文件，原缩略图，若返回true或false，不方便给出提示信息。
-		$msg = $this->deleteThumb($albumId);    //根据缩略图地址来删除服务器上的缩略图
-		echo $msg . '<br />';
+		if( $cover )
+		{
+			$msg = $this->deleteThumb($albumId);    //根据缩略图地址来删除服务器上的缩略图
+			echo $msg . '<br />';
 				
-		$sql = "UPDATE album SET albumName='$albumName',thumbUrl='$cover',topicId=$topicId WHERE id=$albumId";
+			$sql = "UPDATE album SET albumName='$albumName',thumbUrl='$cover',topicId=$topicId WHERE id=$albumId";
+		}
+		else
+		{
+				$sql = "UPDATE album SET albumName='$albumName',topicId=$topicId WHERE id=$albumId";
+		}
 		$result = $this->db->_query($sql);
 		$rows = mysql_affected_rows();
 		if( $rows>0 )
@@ -249,6 +258,6 @@ class admin
 		{
 			return false;
 			//$msg = '增加图集 ' . $albumName . ' 失败。<br />';
-		}
+		}		
 	}
 }

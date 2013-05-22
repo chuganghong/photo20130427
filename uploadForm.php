@@ -29,6 +29,8 @@ $smarty->assign('root',$_SERVER['SERVER_NAME']);
 
 $smarty->assign('albumId',$albumId);
 
+$smarty->assign('isAllow',1);
+
 
 $action = 'upload.php';
 $smarty->assign('action',$action);
