@@ -1,24 +1,25 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-26 06:46:33
-         compiled from ".\templates\topicManage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:296005178ed8a591d34-06627291%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-26 08:10:59
+         compiled from "templates\topicManage.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:936351a1bdccd26a63-10932661%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '57c8739479a126e12d635f3659848f5958a3216c' => 
+    'f6d23ef3dea981fe4ef72f711b07e45ea36d14c0' => 
     array (
-      0 => '.\\templates\\topicManage.tpl',
-      1 => 1369550670,
+      0 => 'templates\\topicManage.tpl',
+      1 => 1369555801,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '296005178ed8a591d34-06627291',
+  'nocache_hash' => '936351a1bdccd26a63-10932661',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5178ed8a6fcb19_85474686',
+  'unifunc' => 'content_51a1bdccecb093_38649058',
   'variables' => 
   array (
+    'js' => 0,
     'addUrl' => 0,
     'editUrl' => 0,
     'deleteUrl' => 0,
@@ -27,9 +28,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5178ed8a6fcb19_85474686')) {function content_5178ed8a6fcb19_85474686($_smarty_tpl) {?>
-<script type="text/javascript" src="./js/common.js"></script>
-<script type="text/javascript" src="./js/common.js"></script>
+<?php if ($_valid && !is_callable('content_51a1bdccecb093_38649058')) {function content_51a1bdccecb093_38649058($_smarty_tpl) {?>
+<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['js']->value;?>
+"></script>
+
 <p>栏目列表</p>
 <p>
 	<table border="1">
