@@ -1,30 +1,30 @@
 <?php
 /*
-	编辑图集
+	新增图集
 	2013/04/28修改：
 	1.使用了admin.class.php中的类方法。此页的代码变少了，但是却转移到了admin.class.php中，若此代码不能复用，这么做有何意义？
 	2.将编辑或增加图集之后的提示信息封装到了函数msg中。
 	2013年5月21日修改：
 	1.在编辑图集页面，可以上传缩略图也可以不上传缩略图，但是，为了与上传图片页面共用一个上传图片的模板，我想了很多办法来在公用的上传代码中来实现模板共享，觉得很麻烦，也没有实现功能。
 	今后遇到这种情况，宁可多写一个模板，也不要贪图少写这种无难度的代码。
+	2013年5月22日修改：
+	1.由增加和编辑图集功能改为增加功能
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 require_once('include.php');
 $topicId = $_POST['topic'];
 $albumName = $_POST['albumName'];
-$isChange = $_POST['change'];   //识别是否上传了图片
+$isEmpty = $_POST['isEmpty'];   //识别是否上传了图片
 
 $admin = new admin($db);
 
-if( $isChange==1 )
+if( $isEmpty==1 )
 {
-	echo '1<br />';//test
 	if( isset($_POST['image']) )   //上传网络图片
 	{
 		$thumbUrl = $_POST['image'];
-		//if( isset($_POST['url']) )   //为何会出现$_POST['url']?
 		/*
-		if( isset($))
+		if( isset($_POST['url']) )
 		{
 			//网络图片
 			$cover = _filter($_POST['url']);
@@ -46,9 +46,8 @@ if( $isChange==1 )
 		}
 	}
 }
-else if( $isChange==0 )
+else if( $isEmpty==0 )
 {
-	echo '0<br />';   //test
 	$cover = '';
 }
 $albumId = $_POST['albumId'];
@@ -66,7 +65,6 @@ $albumName = _filter($albumName);
 var_dump($cover);  //test
 $albumId = _filter($albumId);
 
-/*
 if( $which == 'add' )
 {	
 	if( $admin->addAlbum($albumName,$cover,$topicId) )  //增加图集
@@ -82,22 +80,25 @@ if( $which == 'add' )
 		msg($boolean,$i,$which,$albumName);		
 	}	
 }
-*/
-if( $admin->editAlbum($albumName,$cover,$topicId,$albumId)>0 )
+/*
+else if( $which == 'edit' )
 {
-	$boolean = true;
-	$i = 3;
-	msg($boolean,$i,$which,$albumName);		
+	
+	if( $admin->editAlbum($albumName,$cover,$topicId,$albumId)>0 )
+	{
+		$boolean = true;
+		$i = 3;
+		msg($boolean,$i,$which,$albumName);		
+	}
+	else
+	{
+		$boolean = false;
+		$boolean = true;
+		$i = 3;
+		msg($boolean,$i,$which,$albumName);		
+	}	
 }
-else
-{
-	$boolean = false;
-	$boolean = true;
-	$i = 3;
-	msg($boolean,$i,$which,$albumName);		
-}	
-
-
+*/
 
 function msg($boolean,$i,$which,$albumName)   //增加或编辑图集之后的提示信息
 {

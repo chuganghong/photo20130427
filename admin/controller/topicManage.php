@@ -1,5 +1,5 @@
 <?php
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 include('include.php');
 
 $addUrl = 'topicForm.php';
@@ -43,4 +43,4 @@ $smarty->assign('trTd',$data);
 $th = array('编号','栏目名称','操作');
 $smarty->assign('th',$th);
 
-$smarty->display('templates/topicManage.tpl');
+$smarty->display('../templates/topicManage.tpl');

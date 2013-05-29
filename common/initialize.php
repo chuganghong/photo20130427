@@ -1,5 +1,6 @@
 <?php
-$path = dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/lib/';
+$path = dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/lib/';
+//var_dump($path);  //test
 set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 //var_dump($_SERVER['SCRIPT_FILENAME']);  //test
 //var_dump(get_include_path());//test

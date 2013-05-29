@@ -2,7 +2,7 @@
 /*
 	图集图片上传表单
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 include('include.php');
 
 $albumId = _filter($_GET['id']);  //图集ID
@@ -37,7 +37,7 @@ $action = 'upload.php';
 $smarty->assign('action',$action);
 
 
-$smarty->display('templates/uploadForm.tpl');
+$smarty->display('../templates/uploadForm.tpl');
 
 
 

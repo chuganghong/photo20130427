@@ -2,7 +2,7 @@
 /*
 	图集管理albumManage.php
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 require_once('include.php');
 
 //从数据库中获取分页所需的数据
@@ -19,7 +19,7 @@ $nums = $row[0];
 //var_dump($nums);   //test
 $length = 30;
 $sumPage = ceil($nums/$length);
-var_dump($sumPage);//test
+//var_dump($sumPage);//test
 if( isset($_GET['page']) )
 {
 	$currentPage = $_GET['page'];
@@ -28,9 +28,7 @@ else
 {
 	$currentPage = 1;
 }
-var_dump($currentPage);   //test
 $start = ($currentPage-1)*$length;
-
 $addUrl = 'albumForm.php';
 $editUrl = 'albumForm.php';
 $deleteUrl = 'deleteAlbum.php';
@@ -61,13 +59,13 @@ $smarty->assign('uploadUrl',$uploadUrl);
 $js = '../common/js/common.js';
 $smarty->assign('js',$js);
 
-$smarty->display('templates/albumManage.tpl');
+$smarty->display('../templates/albumManage.tpl');
 
 //下面是分页符，若能整合进模板就好了。
 
 $total_page =$sumPage;
-var_dump($_SERVER['SCRIPT_NAME']);  //TEST
-var_dump(dirname($_SERVER['SCRIPT_NAME']));  //TEST
+//var_dump($_SERVER['SCRIPT_NAME']);  //TEST
+//var_dump(dirname($_SERVER['SCRIPT_NAME']));  //TEST
 //$url = dirname($_SERVER['SCRIPT_NAME']) . '/adminIndex.php?which=admin&page';
 $url = $_SERVER['SCRIPT_NAME'] . '?page';
 $page = new page($total_page,$url,$currentPage);

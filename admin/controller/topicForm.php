@@ -2,7 +2,7 @@
 /*
 	新增编辑栏目FORM
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 require_once('include.php');
 
 $which = $_GET['which'];
@@ -38,6 +38,6 @@ else if( $which=='edit' )
 	$smarty->assign('topicId',$id);
 }
 
-$smarty->display('templates/topicForm.tpl');
+$smarty->display('../templates/topicForm.tpl');
 	
 

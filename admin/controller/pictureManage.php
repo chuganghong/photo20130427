@@ -2,7 +2,7 @@
 /*
 	图片管理
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 include('include.php');
 $sql2 = "SELECT COUNT(id) FROM picture";
 $result = $db->_query($sql2);
@@ -35,13 +35,18 @@ if( !isset($td) )
 
 $th = array('ID','缩略图','操作');
 
+//var_dump($td);  //test
+
 $smarty->assign('th',$th);
 $smarty->assign('td',$td);
+
+$js = '../common/js/common.js';
+$smarty->assign('js',$js);
 
 $deletePicUrl = 'deletePic.php';
 $smarty->assign('deletePicUrl',$deletePicUrl);
 
-$smarty->display('templates/pictureManage.tpl');
+$smarty->display('..//templates/pictureManage.tpl');
 
 $url = $_SERVER['SCRIPT_NAME'] . '?page';
 $page = new page($sumPage,$url,$currentPage);

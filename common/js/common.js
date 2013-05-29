@@ -3,7 +3,12 @@ function $(id)
 	return document.getElementById(id);
 }
 
-//定时跳转
+/**
+ * 定时跳转，并且显示倒计时，与timer()一起使用，没有使用，可以运行
+ * @param url 要跳转到的页面URL
+ * @param id 输出提示信息的HTML元素的ID
+ * @param i  设定多少秒后跳转
+ */
 function setTimeGo(url,id,i)
 {
 	t = i;
@@ -12,6 +17,10 @@ function setTimeGo(url,id,i)
 	setInterval("timer()",1000);	
 }
 
+/**
+ * 跳转到某个页面
+ * 
+ */
 function timer()   //与setTimeGo()配合使用
 {
 	var tip = (t--) + "秒后返回";
@@ -21,6 +30,7 @@ function timer()   //与setTimeGo()配合使用
 		location.href = url_1;
 	}
 }
+
 function chose(id)
 {
 	//alert("start chose");//test
@@ -78,49 +88,28 @@ function _delete(url)   //没有使用，不知是否正确
 	}
 }
 
-function deletePic(url)    //删除图片
-{
-	var result = isGo();
-	if( result )
+/**
+ * 删除图集或图片
+ * @param string url 执行删除请求的后台代码URL
+ * @param string id 存储发送到后台代码的数据的input的ID
+ * @param integer o 是否验证选中了复选框 1验证，0不验证 
+ * @returns void
+ */
+function deleteAlPic(url,id,o)    //删除图集或图片
+{	
+	if(o)
 	{
-		var params = "";
-		var inputs = document.getElementsByTagName("input");
-		for(var i=0;i<inputs.length;i++)
-		{
-			if( inputs[i].type == "checkbox" )
-			{
-				if( inputs[i].checked == true )
-				{
-					if( inputs[i].value == "on" )
-					{
-						continue;
-					}
-					//alert(inputs[i].value);  //test
-					if( params == "" )
-					{
-						params = inputs[i].value;
-					}
-					else
-					{
-						params += "~" + inputs[i].value ;
-					}
-				}
-			}
-		}
-		var url = url + "?picIdUrls=" + params;
-		location.href = url;
+		var result = isGo();
 	}
-}
-
-function deleteAlbum(url)    //删除图集
-{
-	alert("start deleteAlbum");//test
-	
-	var result = isGo();
+	else
+	{
+		result =1;
+	}
 	if( result )
 	{
-		var params = "";
+		var params = [];
 		var inputs = document.getElementsByTagName("input");
+		var m=0;
 		for(var i=0;i<inputs.length;i++)
 		{
 			if( inputs[i].type == "checkbox" )
@@ -130,26 +119,25 @@ function deleteAlbum(url)    //删除图集
 					if( inputs[i].value == "on" )
 					{
 						continue;
-					}
-					//alert(inputs[i].value);  //test
-					if( params == "" )
-					{
-						params = inputs[i].value;
+					}					
+					if( params[m] == "" )
+					{						
+						params[m] = inputs[i].value;
+						m++;
 					}
 					else
 					{
-						params += "~" + inputs[i].value ;
-						//params[] = inputs[i].value;
-						//params = JSON.stringify()
+						params[m] = inputs[i].value;
+						m++;						
 					}
 				}
 			}
 		}
-		//params = JSON.stringify(params);   //将变量转为JSON形式
-		//alert('JSON'+params);   //test
-		var url = url + "?albumIds=" + params;
-		alert(url);  //test
-		location.href = url;
+		params = JSON.stringify(params);   //将变量转为JSON形式		
+		myForm = document.getElementById('myForm');
+		myForm.action = url;		
+		document.getElementById(id).value = params;		
+		myForm.submit();		
 	}
 }
 
@@ -158,26 +146,14 @@ function deleteAlbum(url)    //删除图集
 
 //设置编辑的URL
 function setEditUrl(value,c)
-{
-	
-	//alert("start setEditUrl");//test
-	//alert("Value:" + value);  //test
-	//alert(c);  //test
-	//var i = '';
-	//alert(
+{	
 	if( c == true )
-	{
-		//alert("start this.checked");
+	{		
 		var ahref = document.getElementsByClassName("ade");
-		//alert(ahref.length);  //test
+		
 		for(var i=0;i<ahref.length;i++)
 		{
-			ahref[i].href += "&id=" + value;
-			//var href = ahref[i].href;  //test
-			//alert(href);  //test
-		
-		//var href = href + "&id=" + value;
-		//alert(href);
+			ahref[i].href += "&id=" + value;			
 		}
 	}
 }
@@ -191,7 +167,8 @@ function isCheck()   //检测是否选中了至少一个checkbox
 		if( inputs[i].type == "checkbox" )
 		{
 			//continue;
-			if( inputs[i].value == '0' )
+			//if( inputs[i].value == '0' )
+			if( inputs[i].value == 'on' )
 			{
 				continue;
 			}

@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-29 07:57:26
-         compiled from "templates\pictureManage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1044551a1bdb9703517-69776681%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-29 09:36:31
+         compiled from "..\templates\pictureManage.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2827851a5cc1fe62667-96017562%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '59d73353fe830d0980d035f869197240b9af08dc' => 
+    '07d2af694186c3537479237c9c420a28dc56ce3f' => 
     array (
-      0 => 'templates\\pictureManage.tpl',
+      0 => '..\\templates\\pictureManage.tpl',
       1 => 1369814242,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1044551a1bdb9703517-69776681',
+  'nocache_hash' => '2827851a5cc1fe62667-96017562',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51a1bdb98a0414_43855276',
   'variables' => 
   array (
     'js' => 0,
@@ -25,8 +23,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'td' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_51a5cc200b76b7_44136785',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a1bdb98a0414_43855276')) {function content_51a1bdb98a0414_43855276($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_51a5cc200b76b7_44136785')) {function content_51a5cc200b76b7_44136785($_smarty_tpl) {?>
 <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['js']->value;?>
 "></script>
 <p>图片列表</p>

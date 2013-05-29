@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="{$header}"}
 
 <form action="{$action}" method="post">
 UserName:
@@ -9,4 +9,4 @@ Password:
 <input type="submit" value="{$value}" />
 </form>
 
-{* {include file="footer.tpl"} *}
+{*include file="$footer"*}

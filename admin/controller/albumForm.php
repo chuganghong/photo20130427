@@ -2,7 +2,7 @@
 /*
 	图集管理FORM
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 require_once('include.php');
 if( !isset($_GET['which']) )
 {
@@ -47,7 +47,7 @@ if( $which=='add' )
 	
 	$smarty->assign('isAllow',1);
 	
-	$smarty->display('templates/albumForm.tpl');
+	$smarty->display('../templates/albumForm.tpl');
 	
 }
 else if( $which=='edit' )
@@ -81,6 +81,6 @@ else if( $which=='edit' )
 	
 	$smarty->assign('isAllow',0);
 	
-	$smarty->display('templates/albumForm2.tpl');
+	$smarty->display('../templates/albumForm2.tpl');
 }
 

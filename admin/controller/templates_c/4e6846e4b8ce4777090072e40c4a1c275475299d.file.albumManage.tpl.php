@@ -1,47 +1,54 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-05-29 07:57:26
-         compiled from "templates\pictureManage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1044551a1bdb9703517-69776681%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-29 09:36:30
+         compiled from "..\templates\albumManage.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:334551a5cc1e8ba2c6-39628567%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '59d73353fe830d0980d035f869197240b9af08dc' => 
+    '4e6846e4b8ce4777090072e40c4a1c275475299d' => 
     array (
-      0 => 'templates\\pictureManage.tpl',
-      1 => 1369814242,
+      0 => '..\\templates\\albumManage.tpl',
+      1 => 1369811642,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1044551a1bdb9703517-69776681',
+  'nocache_hash' => '334551a5cc1e8ba2c6-39628567',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51a1bdb98a0414_43855276',
   'variables' => 
   array (
     'js' => 0,
-    'deletePicUrl' => 0,
+    'addUrl' => 0,
+    'editUrl' => 0,
+    'deleteUrl' => 0,
     'th' => 0,
     'td' => 0,
+    'uploadUrl' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_51a5cc1eaf0365_29225829',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51a1bdb98a0414_43855276')) {function content_51a1bdb98a0414_43855276($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_51a5cc1eaf0365_29225829')) {function content_51a5cc1eaf0365_29225829($_smarty_tpl) {?>
 <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['js']->value;?>
 "></script>
-<p>图片列表</p>
+<p>图集列表</p>
 <p>
 	<table border="1">
-		<tr>			
-			<td><button onclick='deleteAlPic("<?php echo $_smarty_tpl->tpl_vars['deletePicUrl']->value;?>
-","picIds",1)'>删除</button></td>			
+		<tr>
+			<td><a href="<?php echo $_smarty_tpl->tpl_vars['addUrl']->value;?>
+?which=add">新增</a></td>
+			<td><a href="#" onclick="edit('<?php echo $_smarty_tpl->tpl_vars['editUrl']->value;?>
+')">编辑</a></td>
+			<td onclick='deleteAlPic("<?php echo $_smarty_tpl->tpl_vars['deleteUrl']->value;?>
+","albumIds")'>删除</td>			
 		</tr>
 	</table>
 </p>
 <p>
-<table border="1" width="80%">
+<table border="1" width="80%">	
 	<tr>
-		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)" /></th>
+		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)"  /></th>
 		<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['th'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['th']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['th']['name'] = 'th';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['th']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['th']->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -70,7 +77,8 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['th']['last']       = ($_smar
 </th>
 		<?php endfor; endif; ?>
 	</tr>
-	<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['td'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['td']);
+	<?php if (count($_smarty_tpl->tpl_vars['td']->value)!=0){?>
+		<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['td'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['td']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['name'] = 'td';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['td']->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['show'] = true;
@@ -94,22 +102,27 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['index_next'] = $_smart
 $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['td']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['td']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['total']);
 ?>
-	<tr>
-		<td width="5%"><input type="checkbox" name="boxes[]" value="<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
-|<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['pictureUrl'];?>
+		<tr>
+			<td><input type="checkbox" name="boxes[]" value="<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['topicId'];?>
+=><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['albumName'];?>
+=><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['thumbUrl'];?>
+=><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
 " /></td>
-		<td width="10%"><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
+			
+			
+			<td><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
 </td>
-		<td width="60%" align="center"><img src="<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['pictureUrl'];?>
-" width="350" height="300" /></td>
-		<td width="25%"><a href="<?php echo $_smarty_tpl->tpl_vars['deletePicUrl']->value;?>
-?picIdUrls=<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
-|<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['pictureUrl'];?>
-">删除</span></td>
-	</tr>
-	<?php endfor; endif; ?>
+			<td><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['albumName'];?>
+</td>
+			<td><a href="<?php echo $_smarty_tpl->tpl_vars['uploadUrl']->value;?>
+?id=<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
+">上传图片</a></td>
+		</tr>
+		<?php endfor; endif; ?>
+		
+	<?php }?>
+	<form method="post" id="myForm">
+		<input type="hidden" name="albumIds" value=""  id="albumIds" />
+	</form>
 </table>
-<form method="post" id="myForm">
-<input type="hidden" name="picIdUrls" id = "picIds" />
-</form>
-	<?php }} ?>
+</p><?php }} ?>

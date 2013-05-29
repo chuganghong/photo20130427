@@ -2,7 +2,7 @@
 /*
 	后台首页
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 include('include.php');
 session_start();
 
@@ -28,4 +28,4 @@ $smarty->assign('url',$url);
 $smarty->assign('adminIndexTop','adminIndexTop.php');
 
 
-$smarty->display('templates/adminIndex.tpl');
+$smarty->display('../templates/adminIndex.tpl');

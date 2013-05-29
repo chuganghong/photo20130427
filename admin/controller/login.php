@@ -4,7 +4,7 @@
 	2013/04/28修改：
 	1.把处理登录的代码移到了admin.class.php中
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/');
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
 include('include.php');
 $which = $_POST['which'];
 
