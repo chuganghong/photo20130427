@@ -2,8 +2,7 @@
 /*
 	后台首页
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
-include('include.php');
+include('../common/include.php');
 session_start();
 
 if( !isset($_SESSION['adminName']) )
@@ -20,7 +19,7 @@ $smarty->assign('title','管理员后台首页');
 
 
 $nickname = 'admin';
-$url = 'logout.php?which=' . $which;
+$url = '../model/logout.php?which=' . $which;
 
 $smarty->assign('nickname',$nickname);
 $smarty->assign('url',$url);
@@ -28,4 +27,4 @@ $smarty->assign('url',$url);
 $smarty->assign('adminIndexTop','adminIndexTop.php');
 
 
-$smarty->display('../templates/adminIndex.tpl');
+$smarty->display( TPL . 'adminIndex.tpl');

@@ -21,7 +21,7 @@
 	{if $td|@count neq 0}{*这句是什么意思？*}
 		{section name=td loop=$td }
 		<tr>
-			<td><input type="checkbox" name="boxes[]" value="{$td[td].topicId}=>{$td[td].albumName}=>{$td[td].thumbUrl}=>{$td[td].id}" /></td>
+			<td><input type="checkbox" name="boxes[]" value="{$td[td].topicId}=>{$td[td].albumName}=>{$td[td].thumbUrl}=>{$td[td].id}=>{$td[td].ln}" /></td>
 			{*<td><input type="checkbox" name="boxes[]" value='{$td[td].topicId},{$td[td].albumName},{$td[td].thumbUrl},{$td[td].id}' /></td>*}
 			{*<td>{$smarty.section.td.index+1}</td>*}
 			<td>{$td[td].id}</td>

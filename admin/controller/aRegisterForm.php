@@ -1,9 +1,8 @@
 <?php
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
-require_once('include.php');
+require_once('../common/include.php');
 
-$smarty->assign('action','register.php');
+$smarty->assign('action','../model/register.php');
 $smarty->assign('which','admin');
 $smarty->assign('value','Register');
 
-$smarty->display('../templates/lrForm.tpl');
+$smarty->display( TPL . 'lrForm.tpl');

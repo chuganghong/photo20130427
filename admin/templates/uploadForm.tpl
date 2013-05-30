@@ -40,7 +40,7 @@ function noEmpty(isAllow)   //防止提交空表单。当isAllow为0时，此函
 </form>
 <hr>
 {if $ln == 1 }
-<img src="{$pictureUrl}" />
+<img src="{$host}/{$pictureUrl}" />
 {elseif $ln == 0}
 	{if $pictureUrl neq null }
 <img src="{$pictureUrl}" />

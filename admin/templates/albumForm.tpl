@@ -50,8 +50,3 @@ function noEmpty(isAllow)   //防止提交空表单
 <br />
 <input type="submit" value="上传" onmouseover="noEmpty({$isAllow})"/>
 </form>
-<hr>
-
-{if $which == "edit" }
-<img src="{$thumbUrl}" />
-{/if}

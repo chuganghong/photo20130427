@@ -2,8 +2,7 @@
 /*
 	图集管理FORM
 */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/common/');
-require_once('include.php');
+require_once('../common/include.php');
 if( !isset($_GET['which']) )
 {
 	die();
@@ -17,16 +16,13 @@ while( $row = mysql_fetch_assoc($result) )
 	$topicName[$row['id']] = $row['topicName'];
 }
 
-
-
-
 $smarty->assign('topicName',$topicName);
 
 
 if( $which=='add' )
 {
 	//新增图集
-	$action = 'addAlbum.php';
+	$action = '../model/addAlbum.php';
 	$value = '保存';
 	$src = '';
 	
@@ -47,7 +43,7 @@ if( $which=='add' )
 	
 	$smarty->assign('isAllow',1);
 	
-	$smarty->display('../templates/albumForm.tpl');
+	$smarty->display( TPL . 'albumForm.tpl');
 	
 }
 else if( $which=='edit' )
@@ -60,9 +56,16 @@ else if( $which=='edit' )
 	$albumName = $values[1];
 	$thumbUrl = $values[2];   //暂不使用
 	$albumId = $values[3];
+	$ln = $values[4];   //是网络图片还是本地图片，1为本地，0为网络
+	
+	$host = 'http://' . $_SERVER['HTTP_HOST'];    //与从数据库中取出的缩略图地址一起使用
+	
+	if( $ln )
+		$thumbUrl = $host . '/' . $thumbUrl;
+	
 	
 		
-	$action = 'editAlbum.php';
+	$action = '../model/editAlbum.php';
 	$value = '更新';
 		
 	$smarty->assign('action',$action);
@@ -76,11 +79,14 @@ else if( $which=='edit' )
 	
 	$smarty->assign('albumId',$albumId);
 	
+	//$smarty->assign('ln',$ln);
+	//$smarty->assign('host',$host);
 	
-	$smarty->assign('thumbUrl',$thumbUrl);
 	
-	$smarty->assign('isAllow',0);
+	//$smarty->assign('thumbUrl',$thumbUrl);
 	
-	$smarty->display('../templates/albumForm2.tpl');
+	$smarty->assign('isAllow',0);//这有什么作用？
+	
+	$smarty->display( TPL . 'albumForm2.tpl');
 }
 

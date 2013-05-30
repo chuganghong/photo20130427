@@ -62,6 +62,12 @@ function isChange()   //识别是否更新了图集的缩略图，1为更新了�
 <hr>
 <p id="tip"></p>
 
-{if $which == "edit" }
 <img src="{$thumbUrl}" />
+
+{*
+{if $ln equ 1}
+	<img src="{$host}/{$thumbUrl}" />
+{else if $ln equ 0}
+		<img src="{$thumbUrl}" />
 {/if}
+*}

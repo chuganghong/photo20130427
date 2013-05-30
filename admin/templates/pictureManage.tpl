@@ -20,7 +20,14 @@
 	<tr>
 		<td width="5%"><input type="checkbox" name="boxes[]" value="{$td[td].id}|{$td[td].pictureUrl}" /></td>
 		<td width="10%">{$td[td].id}</td>
-		<td width="60%" align="center"><img src="{$td[td].pictureUrl}" width="350" height="300" /></td>
+		<td width="60%" align="center">
+		
+		{if $td[td].ln eq 1}
+		<img src="{$host}/{$td[td].pictureUrl}" width="350" height="300" /></td>
+		{else}
+		<img src="{$td[td].pictureUrl}" width="350" height="300" /></td>
+		{/if}
+		
 		<td width="25%"><a href="{$deletePicUrl}?picIdUrls={$td[td].id}|{$td[td].pictureUrl}">删除</span></td>
 	</tr>
 	{/section}
