@@ -46,6 +46,7 @@ function isChange()   //识别是否更新了图集的缩略图，1为更新了�
 标题：
 <input type="text" name="albumName"  value="{$albumName}" />
 <br />
+操作：{$recommend}
 
 图集封面：<br />
 <span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>

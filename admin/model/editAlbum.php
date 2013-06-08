@@ -16,6 +16,18 @@ $topicId = $_POST['topic'];
 $albumName = $_POST['albumName'];
 $isChange = $_POST['change'];   //识别是否上传了图片
 
+//获取recommend记录
+//$oldRec1 = $_GET['oldRec'];
+$oldRec1 = $_POST['oldRec'];
+$oldRec = json_decode($oldRec1);
+//var_dump($oldRec);//test
+//var_dump($_POST);
+//var_dump($_GET);
+//var_dump(unserialize($_POST['oldRec']));  //test
+$newRec = isset($_POST['rec'])?$_POST['rec']:array();  //新的recommend记录
+//var_dump($newRec);
+//die();//test
+
 $admin = new admin($db);
 
 if( $isChange==1 )
@@ -47,6 +59,7 @@ else if( $isChange==0 )
 {
 	//echo '0<br />';   //test
 	$cover = '';
+	$ln = '';
 }
 $albumId = $_POST['albumId'];
 //VAR_DUMP($_POST);  //TEST
@@ -63,8 +76,26 @@ $albumName = _filter($albumName);
 //var_dump($cover);  //test
 $albumId = _filter($albumId);
 
+//var_dump('ln',$ln);//test
 if( $admin->editAlbum($albumName,$cover,$topicId,$albumId,$ln)>0 )
 {
+	foreach($newRec as $v)   //增加新的推荐记录
+	{
+		if(!in_array($v,$oldRec))
+		{
+			$admin->addRec($v,$albumId);
+		}
+	}
+	
+	foreach($oldRec as $v1)   //删除已经取消的推荐记录
+	{
+		
+		if(!in_array($v1,$newRec))
+		{
+			//echo 'start <br />';  //test
+			$admin->delRec($v1, $albumId);
+		}
+	}
 	$boolean = true;
 	$i = 3;
 	msg($boolean,$i,$which,$albumName);		

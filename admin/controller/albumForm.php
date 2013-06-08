@@ -9,6 +9,8 @@ if( !isset($_GET['which']) )
 }
 $which = $_GET['which'];
 
+$admin = new admin($db);
+
 $sql = "SELECT * FROM topic";
 $result = $db->_query($sql);
 while( $row = mysql_fetch_assoc($result) )
@@ -68,7 +70,7 @@ else if( $which=='edit' )
 	$action = '../model/editAlbum.php';
 	$value = '更新';
 		
-	$smarty->assign('action',$action);
+	//$smarty->assign('action',$action);
 	$smarty->assign('value',$value);
 	$smarty->assign('which',$which);
 	
@@ -77,15 +79,47 @@ else if( $which=='edit' )
 	$smarty->assign('topicId',$topicId);
 	$smarty->assign('albumName',$albumName);
 	
-	$smarty->assign('albumId',$albumId);
-	
-	//$smarty->assign('ln',$ln);
-	//$smarty->assign('host',$host);
-	
-	
-	//$smarty->assign('thumbUrl',$thumbUrl);
+	$smarty->assign('albumId',$albumId);	
 	
 	$smarty->assign('isAllow',0);//这有什么作用？
+	
+	//$smarty->assign('rec',$data);//推荐到首页等所需要的数据
+	
+	/*推荐到首页等所需要的数据，因smarty中的循环不能方便地实现输出，故用这种方法*/
+	
+	$albumId = _filterStr($albumId);
+	$data = $admin->getRec($albumId);  //获取推荐到首页等的记录
+	
+	$rec = '';
+	$tips = array('推荐到首页中图','推荐到首页文字','推荐到首页小图','推荐到图片展示页的精选');
+	for($i=1;$i<=4;$i++)
+	{
+		if(in_array($i,$data) )
+		{
+			$rec .= '<input type="checkbox" name="rec[]" value="' . $i . '" checked="true" />' . $tips[$i-1];
+		}
+		else
+		{
+			$rec .= '<input type="checkbox" name="rec[]" value="' . $i . '" />' . $tips[$i-1];
+		}		
+	}
+	
+	$jsonRec = json_encode($data);   //将旧的recommend记录转为json形式
+	//$RecStr = serialize($data);
+	//$RecStr = addslashes($RecStr);
+	//var_dump($RecStr);  //test
+	
+	//var_dump($jsonRec);  //test
+	//$action .= '?oldRec=' . $jsonRec;
+	//$action .= '?oldRec=' . $RecStr;
+	//var_dump($action);  //test
+	$smarty->assign('action',$action);
+	
+	
+	$rec .= '<input type="input" name="oldRec" value=' . $jsonRec . ' /><br />';
+	
+	$smarty->assign('recommend',$rec);
+	/*推荐到首页等所需要的数据，因smarty中的循环不能方便地实现输出，故用这种方法*/
 	
 	$smarty->display( TPL . 'albumForm2.tpl');
 }

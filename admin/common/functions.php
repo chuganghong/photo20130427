@@ -12,7 +12,7 @@ function _filter($input)   //过滤数据
 	{
 		foreach( $input as $key=>$value )
 		{
-			$data[$key] = $value;
+			$data[$key] = _filterStr($value);
 		}
 	}
 	else

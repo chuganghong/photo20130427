@@ -1,0 +1,232 @@
+body
+{
+	font-size:12px;
+}
+
+a
+{
+	color:#333;
+	text-decoration:none;
+}
+
+ul,li
+{
+	list-style-type:none;
+}
+
+.wrap960
+{
+	width:960px;
+	height:auto;
+	margin:10px auto;
+	
+	border:1px solid green;
+	
+}
+
+img
+{
+	border:0px;
+}
+
+.imgs
+{
+	width:960px;
+	height:500px;
+}
+/*首页幻灯片*/
+.flag
+{
+	height:360px;
+	width:960px;
+	margin:0 auto;
+	
+}
+.flag_left
+{
+	width:670px;
+	height:360px;
+	border:1px solid gray;
+	
+	
+	float:left;
+}
+.flag_left img
+{
+	height:350px;
+	width:670px;
+	
+}
+.flag_right
+{
+	width:280px;
+	height:360px;
+	
+	float:right;
+	overflow:hidden;
+	border:1px solid gray;
+}
+.imgs_tit2
+{
+	width:270px;
+	height:30px;	
+	font-size:14px;
+	font-weight:bold;
+	margin-left:6px;
+	
+}
+.imgs_tit2 img
+{
+	position:relative;
+	top:-10px;
+}
+.p_list
+{
+	height:360px;
+	width:280px;
+	border-top:1px dotted gray;
+	float:right;
+	font-size:12px;
+	margin-top:2px;	
+	background:url('http://www.166122.com/themes/images/num.gif') no-repeat;
+	background-position:8px 19px;
+	overflow:hidden;	
+}
+
+.p_list ul li
+{
+	height:29px;
+	width:240px;
+	line-height:29px;
+	border-bottom:1px dotted gray;	
+}
+/*首页幻灯片*/
+/*首页图集列表topic*/
+.imgs_tit
+{
+	width:950px;
+	height:35px;
+	float:left;	
+	
+	font-size:14px;
+	font-weight:bold;
+	text-indent:10px;
+	line-height:50px;	
+	margin-top:0px;
+	border-bottom:1px dashed gray;
+}
+
+
+.imgs_tit a{color:#333;}
+
+.imgs_tit h2
+{
+	float:left;
+}
+
+.imgs_tit h2 img
+{
+	position:relative;
+	top:-15px;
+}
+
+.imgs_tit span
+{
+	float:right;
+}
+/*首页图集列表topic*/
+
+div.img_left
+{	
+	float:left;	
+	width:280px;
+	height:460px;
+	margin-top:20px;	
+}
+ul.img1
+{	
+	display:inline;	
+	list-style-image:url('http://www.166122.com/themes/images/dian.jpg');
+}
+ul.img1 li
+{	
+	text-indent:20px;
+	line-height:23px;
+	float:left;	
+}
+ul.img1 li img
+{
+	width:240px;	
+	border:1px dotted yellow;
+	margin-bottom:-15px;	
+}
+li.pic2
+{
+	list-style-type:none;
+}
+ul.img1 li a
+{	
+	border-bottom:1px dashed gray;
+	
+}
+
+ul p.figure
+{
+	width:245px;
+	height:20px;
+	text-align:center;
+	font-size:15px;	
+	overflow:hidden;	
+}
+ul p.figure a
+{
+	color:red;
+}
+
+div.img_right
+{
+	float:right;	
+	width:670px;
+	height:460px;
+	margin-top:20px;	
+}
+
+ul.img2
+{	
+	display:inline;
+}
+ul.img2 li
+{
+	height:210px;
+	width:160px;
+	float:left;
+	margin-left:5px;	
+	margin-bottom:10px;
+}
+ul.img2 li p
+{
+	width:160px;
+	height:15px;
+	position:relative;
+	left:25px;
+	display:block;
+	overflow:hidden;
+}
+/*友情链接*/
+.siteLink
+{
+	width:960px;
+	height:auto;
+	border:1px dashed yellow;
+	
+}
+.site
+{
+	width:920px;
+	height:auto;
+	line-height:200%;
+	margin-top:60px;
+	margin-left:20px;
+	margin-right:20px;
+	
+}

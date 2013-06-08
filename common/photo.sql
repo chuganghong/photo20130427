@@ -67,6 +67,10 @@ CREATE TABLE IF NOT EXISTS `album` (
   `topicId` int(11) NOT NULL,
   `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ln` int(11) NOT NULL DEFAULT '0',
+  recommend1 int,#标识是否推荐到首页中图
+  recommend2 int,#标识是否推荐到首页文字标题
+  recommend3 int,#标识是否推荐到首页小图
+  recommend4 int,#标识是否推荐到图片展示页的美女精选
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -122,6 +126,16 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `status` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+#推荐表
+CREATE TABLE IF NOT EXISTS recommend
+(
+	id int not null auto_increment,
+	kind int not null,#推荐的种类 1--首页中图，2--首页文字，3--首页小图，4---图片展示页的内容精选
+	yn int default 0,#是否推荐 0为不推荐，1为推荐
+	albumId int not null,#推荐的图集
+	primary key(id)
+);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -278,6 +278,7 @@ class admin
 			$msg .= '删除图集 ' . $albumId . ' 数据库信息失败。<br />';
 		}
 		
+		$this->delRecommend($albumId);   //删除该图集的推荐数据
 		return $msg;
 	}	
 	
@@ -307,12 +308,119 @@ class admin
 	}
 	
 	/**
+	 * 增加推荐到首页等记录
+	 * @param integer $kind 推荐种类，值为1，2，3，4
+	 * @param integer $albumId 图集ID
+	 * @return boolean 返回true，增加记录成功；返回false，增加记录失败
+	 */
+	function addRec($kind,$albumId)
+	{
+		$sql = "INSERT INTO recommend (kind,yn,albumId) VALUES ($kind,1,$albumId)";
+		$this->db->_query($sql);
+		$row = mysql_affected_rows();
+		if( $row )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}		
+	}
+	/**
+	 * 删除推荐到首页等记录
+	 * @param integer $kind 推荐种类，值为1，2，3，4
+	 * @param integer $albumId 图集ID
+	 * 
+	 */
+	function delRec($kind,$albumId)
+	{
+		$sql = "DELETE FROM recommend WHERE kind=$kind AND albumId=$albumId";
+		$this->db->_query($sql);		
+	}
+	
+	/**
+	 * 获取推荐到首页等记录
+	 * @param integer $albumId 图集ID
+	 * @retrun array $data 存储推荐记录的数组
+	 */
+	function getRec($albumId)
+	{
+		$sql = "SELECT kind FROM recommend WHERE albumId=$albumId";
+		$result = $this->db->_query($sql);
+		$data = array();
+		while( $row=mysql_fetch_assoc($result) )
+		{
+			$data[] = $row['kind'];
+		}
+		return $data;
+	}
+	/**
+	 * 根据albumName获取albumId
+	 * @param string $albumName
+	 * @param interger $topicId
+	 * @return integer $albumId
+	 */
+	function getAlbumId($albumName,$topicId)
+	{
+		$sql = "SELECT id FROM album WHERE albumName='$albumName' AND topicId=$topicId";
+		$result = $this->db->_query($sql);
+		$row = mysql_fetch_assoc($result);
+		$albumId = $row['id'];
+		return $albumId;
+	}
+	
+	/**
+	 * 根据albumId删除recommend记录
+	 * @param integer $albumId 图集ID
+	 * 
+	 */
+	function delRecommend($albumId)
+	{
+		$sql = "DELETE FROM recommend WHERE albumId=$albumId";
+		$this->db->_query($sql);
+	}
+	
+	/**
+	 * 增加推荐到首页等记录，多条
+	 * @param array $kinds 存储多个推荐种类的数组
+	 * @param integer $albumId 图集ID
+	 * @return boolean 返回true，增加记录成功；返回false，增加记录失败
+	 */
+	function addRecs($kinds,$albumName,$topicId)
+	{
+		$albumId = $this->getAlbumId($albumName,$topicId);
+		if( !empty($kinds) )
+		{
+			$bool = '';
+			echo 'kinds:';//test
+			var_dump($kinds);  //test
+			foreach($kinds as $kind)
+			{
+				if($this->addRec($kind,$albumId))
+				{
+					$bool = true;
+				}
+				else
+				{
+					$bool = false;
+				}
+			}
+			return $bool;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
+	/**
 	 * 编辑图集
 	 * @param string $albumName 图集名称
 	 * @param string $cover 图集缩略图地址
 	 * @param integer $topicId 图集所属的栏目的ID
 	 * @param integer $albumId 图集ID
-	 * @param unknown_type $ln 识别图集封面是存储到服务器上的图片还是引用网络图片，存储到服务器时值为1，引用网络图片时值为0
+	 * @param integer $ln 识别图集封面是存储到服务器上的图片还是引用网络图片，存储到服务器时值为1，引用网络图片时值为0
 	 * @return boolean 编辑成功时返回true，编辑失败时返回false
 	 */
 	function editAlbum($albumName,$cover,$topicId,$albumId,$ln)  //编辑图集
@@ -327,11 +435,13 @@ class admin
 		}
 		else
 		{
-				$sql = "UPDATE album SET albumName='$albumName',topicId=$topicId WHERE id=$albumId";
+			//echo 'start else<br />';  //test	
+			$sql = "UPDATE album SET albumName='$albumName',topicId=$topicId WHERE id=$albumId";
 		}
 		$result = $this->db->_query($sql);
 		$rows = mysql_affected_rows();
-		if( $rows>0 )
+		//var_dump($rows);  //test
+		if( $rows>=0 )
 		{
 			return true;
 			//$msg = '增加图集 ' . $albumName . ' 成功。<br />';

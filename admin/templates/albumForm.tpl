@@ -37,7 +37,13 @@ function noEmpty(isAllow)   //防止提交空表单
 标题：
 <input type="text" name="albumName"  value="{$albumName}" />
 <br />
-
+操作：
+<!--<input type="checkbox" name="recommend[]" value="0" />推荐到首页大图-->
+<input type="checkbox" name="recommend[]" value="1" />推荐到首页中图
+<input type="checkbox" name="recommend[]" value="2" />推荐到首页文字
+<input type="checkbox" name="recommend[]" value="3" />推荐到首页小图
+<input type="checkbox" name="recommend[]" value="4" />推荐到图片展示页的精选
+<br />
 图集封面：<br />
 <span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
 <br />

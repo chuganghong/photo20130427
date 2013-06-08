@@ -44,7 +44,7 @@ if( $isEmpty==1 )
 }
 
 $albumId = $_POST['albumId'];
-//VAR_DUMP($_POST);  //TEST
+VAR_DUMP($_POST);  //TEST
 
 //var_dump($_POST['which']);  //test
 $which = _filter($_POST['which']);
@@ -55,10 +55,15 @@ $albumName = _filter($albumName);
 
 //var_dump($cover);  //test
 $albumId = _filter($albumId);
+var_dump($albumId);  //test
+
+$kinds = _filter($_POST['recommend']);   //推荐种类
+var_dump($kinds);  //test
+//die();  //test
 
 if( $which == 'add' )
 {	
-	if( $admin->addAlbum($albumName,$cover,$topicId,$ln) )  //增加图集
+	if( ($admin->addAlbum($albumName,$cover,$topicId,$ln)) && ($admin->addRecs($kinds,$albumName,$topicId)) )  //增加图集
 	{
 		$boolean = true;
 		$i = 3;

@@ -1,0 +1,77 @@
+body
+{
+	font-size:12px;
+}
+a
+{
+	text-decoration:none;	
+}
+.wrap960
+{
+	width:960px;
+	border:1px solid green;
+	margin:0 auto;
+}
+.imgs_tit
+{
+	width:950px;
+	height:50px;
+	border-bottom:1px dotted gray;
+	margin:0 auto;
+}
+.imgs_tit h2
+{
+	float:left;
+}
+.configure
+{
+	float:right;
+}
+.imgs_tit img
+{
+	margin-top:-10px;
+}
+.list
+{
+	width:950px;
+	height:500px;
+	
+	margin:0 auto;
+}
+ul li
+{
+	list-style-type:none;
+}
+.list li
+{
+	width:180px;
+	height:250px;
+	margin-bottom:-30px;
+	float:left;
+}
+.list p
+{
+	padding-left:10px;
+	overflow:hidden;
+}
+/*分页*/
+.cut
+{
+	width:900px;
+	height:40px;
+	
+	margin:0 auto;
+}
+.cut ul
+{	
+	margin-left:180px;
+}
+.cut li
+{
+	float:left;
+	font-size:16px;
+	margin-left:10px;
+	padding-left:5px;
+	padding-right:5px;
+	border:1px solid gray;
+}
