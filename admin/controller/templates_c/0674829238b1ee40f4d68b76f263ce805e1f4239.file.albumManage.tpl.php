@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-01 14:07:49
+<?php /* Smarty version Smarty-3.1.12, created on 2013-06-08 09:21:31
          compiled from "D:\wamp\www\GitHub\photo20130427\admin\templates\albumManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:90951aa0035a56793-43839663%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0674829238b1ee40f4d68b76f263ce805e1f4239' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\admin\\templates\\albumManage.tpl',
-      1 => 1369890168,
+      1 => 1370683285,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_51aa0035c961c2_50875987',
   'variables' => 
   array (
     'js' => 0,
@@ -26,8 +28,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'uploadUrl' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51aa0035c961c2_50875987',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51aa0035c961c2_50875987')) {function content_51aa0035c961c2_50875987($_smarty_tpl) {?>
 <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['js']->value;?>
@@ -41,7 +41,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<td><a href="#" onclick="edit('<?php echo $_smarty_tpl->tpl_vars['editUrl']->value;?>
 ')">编辑</a></td>
 			<td onclick='deleteAlPic("<?php echo $_smarty_tpl->tpl_vars['deleteUrl']->value;?>
-","albumIds")'>删除</td>			
+","albumIds",1)'>删除</td>			
 		</tr>
 	</table>
 </p>
@@ -108,6 +108,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['last']       = ($_smar
 =><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['thumbUrl'];?>
 =><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
 =><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['ln'];?>
+" id="<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
 " /></td>
 			
 			
@@ -115,9 +116,17 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['td']['last']       = ($_smar
 </td>
 			<td><?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['albumName'];?>
 </td>
-			<td><a href="<?php echo $_smarty_tpl->tpl_vars['uploadUrl']->value;?>
+			<td>
+				<a href="<?php echo $_smarty_tpl->tpl_vars['uploadUrl']->value;?>
 ?id=<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
-">上传图片</a></td>
+">上传图片</a>&nbsp;
+				<a href="#" onclick="editAn('<?php echo $_smarty_tpl->tpl_vars['editUrl']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
+')">编辑</a>&nbsp;
+				<a href="#" onclick='deleteAnAlPic("<?php echo $_smarty_tpl->tpl_vars['deleteUrl']->value;?>
+","<?php echo $_smarty_tpl->tpl_vars['td']->value[$_smarty_tpl->getVariable('smarty')->value['section']['td']['index']]['id'];?>
+","albumIds")'>删除</a>	
+			</td>
 		</tr>
 		<?php endfor; endif; ?>
 		

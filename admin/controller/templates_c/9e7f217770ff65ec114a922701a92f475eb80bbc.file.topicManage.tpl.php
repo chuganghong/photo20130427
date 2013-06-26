@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-01 14:07:46
+<?php /* Smarty version Smarty-3.1.12, created on 2013-06-08 09:42:34
          compiled from "D:\wamp\www\GitHub\photo20130427\admin\templates\topicManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3178051aa0032626f11-28215445%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9e7f217770ff65ec114a922701a92f475eb80bbc' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\admin\\templates\\topicManage.tpl',
-      1 => 1369555801,
+      1 => 1370684542,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_51aa00329073c2_87963178',
   'variables' => 
   array (
     'js' => 0,
@@ -25,8 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'trTd' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51aa00329073c2_87963178',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51aa00329073c2_87963178')) {function content_51aa00329073c2_87963178($_smarty_tpl) {?>
 <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['js']->value;?>
@@ -107,12 +107,18 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['trTd']['last']       = ($_sm
 		
 			<td><input type="checkbox" name="boxes[]" value="<?php echo $_smarty_tpl->tpl_vars['trTd']->value[$_smarty_tpl->getVariable('smarty')->value['section']['trTd']['index']]['id'];?>
 =><?php echo $_smarty_tpl->tpl_vars['trTd']->value[$_smarty_tpl->getVariable('smarty')->value['section']['trTd']['index']]['topicName'];?>
-"  /></td>
+"  id="<?php echo $_smarty_tpl->tpl_vars['trTd']->value[$_smarty_tpl->getVariable('smarty')->value['section']['trTd']['index']]['id'];?>
+" /></td>
 			<td><?php echo $_smarty_tpl->getVariable('smarty')->value['section']['trTd']['index']+1;?>
 </td>
 			<td><?php echo $_smarty_tpl->tpl_vars['trTd']->value[$_smarty_tpl->getVariable('smarty')->value['section']['trTd']['index']]['topicName'];?>
 </td>
-			<td>删除</td>
+			<td>
+				<a href="#" onclick="editAn('<?php echo $_smarty_tpl->tpl_vars['editUrl']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['trTd']->value[$_smarty_tpl->getVariable('smarty')->value['section']['trTd']['index']]['id'];?>
+')">编辑</a>&nbsp;
+				删除
+			</td>
 		
 	</tr>
 	<?php endfor; endif; ?>

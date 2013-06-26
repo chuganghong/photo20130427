@@ -24,10 +24,13 @@
 	{section name=trTd loop=$trTd}
 	<tr>
 		
-			<td><input type="checkbox" name="boxes[]" value="{$trTd[trTd].id}=>{$trTd[trTd].topicName}"  /></td>
+			<td><input type="checkbox" name="boxes[]" value="{$trTd[trTd].id}=>{$trTd[trTd].topicName}"  id="{$trTd[trTd].id}" /></td>
 			<td>{$smarty.section.trTd.index + 1}</td>
 			<td>{$trTd[trTd].topicName}</td>
-			<td>删除</td>
+			<td>
+				<a href="#" onclick="editAn('{$editUrl}','{$trTd[trTd].id}')">编辑</a>&nbsp;
+				删除
+			</td>
 		
 	</tr>
 	{/section}

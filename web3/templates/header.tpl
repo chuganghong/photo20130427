@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Index</title>
+<link rel="stylesheet" style="text/css" href="{$css1}">
+<link rel="stylesheet" style="text/css" href="{$head}">
+</head>
+<body>
+<div class="header">
+	<div class="tip">
+	<div class="t">
+		<p>天气变凉啦，早晚温差较大，大家注意防寒保暖，多添衣服，祝各位工作和学习愉快 -_-</p>
+		<ul>
+			<li>
+				<img src="http://www.166122.com/themes/images/a-home.gif" />
+				<span>设为首页</span>
+			</li>
+			<li>
+				<img src="http://www.166122.com/themes/images/a-clo.gif"  />
+				<span>加入收藏</span>
+			</li>
+			<li>
+				<img src="http://www.166122.com/themes/images/a-lang.gif" />
+				<span>放到桌面</span>
+			</li>		
+		</ul>
+		</div>
+	</div>
+	<div class="ls">
+		<div class="logo">
+			<img src="http://www.166122.com/themes/images/logo.gif" />
+		</div>
+		<div class="search">
+			<p><input type="text" name="keyword" /></p>
+		</div>
+	</div>
+	<div class="menu">
+		<div class="u">
+		<ul>
+			<li><a href="#">首页</a></li>
+			<li><a href="#">日本美女</a></li>
+			<li><a href="#">中国美女</a></li>
+			<li><a href="#">韩国美女</a></li>
+			<li><a href="#">欧美美女</a></li>
+			<li><a href="#">明星模特</a></li>
+			<li><a href="#">性感美女</a></li>
+			<li><a href="#">清纯美女</a></li>
+			<li><a href="#">美女自拍</a></li>
+		</ul>
+		</div>
+	</div>
+</div>

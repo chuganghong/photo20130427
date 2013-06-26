@@ -77,6 +77,14 @@ function edit(editUrl)    //要实现这样的功能，当全选后再点击“�
 	}
 }
 
+function editAn(editUrl,id)  //编辑一个
+{
+	result = document.getElementById(id).value;
+	var url = editUrl + "?which=edit&id=" + result;
+	alert(url);
+	location.href = url;
+}
+
 function _delete(url)   //没有使用，不知是否正确
 {
 	result = isGo();
@@ -141,8 +149,23 @@ function deleteAlPic(url,id,o)    //删除图集或图片
 	}
 }
 
-
-
+/**
+ * 删除一个图集
+ * @param value
+ * @param c
+ */
+function deleteAnAlPic(url,id1,id2)
+{
+	params = new Array();
+	result = document.getElementById(id1).value;
+	params[0] = result;
+	
+	params = JSON.stringify(params);   //将变量转为JSON形式		
+	myForm = document.getElementById('myForm');
+	myForm.action = url;		
+	document.getElementById(id2).value = params;		
+	myForm.submit();
+}
 
 //设置编辑的URL
 function setEditUrl(value,c)

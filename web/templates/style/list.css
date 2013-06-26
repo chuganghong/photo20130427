@@ -1,0 +1,345 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+	margin:0;
+	padding:0;
+	font-size:12px;
+	font-family:"宋体";
+	
+	background-image:url(bodybj.gif);
+	background-repeat:repeat-x;
+}
+
+ul,li
+{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+
+a
+{
+	text-decoration:none;
+	color:black;
+}
+.space
+{
+	width:100%;
+	height:10px;
+}
+
+a:hover {color:#F6F;text-decoration:underline;}
+
+#topnav
+{
+	width:980px;
+	height:28px;
+	line-height:28px;
+	
+	margin:0 auto;
+	
+	//border:1px solid red;
+}
+#topnav li
+{
+	float:right;
+}
+
+#header
+{
+	width:980px;
+	height:146px;
+	
+	margin:0 auto;
+	
+	//border:1px solid green;
+}
+#logo
+{
+	background-image:url(headerbj.gif);
+	background-repeat:no-repeat;
+	
+	margin:0;
+	padding:0;
+	
+	/*没有这两句时就已经实现了效果，那么，应该要这两句吗？*/
+	width:980px;
+	height:106px;	
+}
+
+#menus
+{
+	width:980px;
+	height:40px;
+	
+	margin:0;
+	padding:0;
+	
+	font-size:16px;
+	font-weight:bold;
+	
+	
+	//border:1px solid yellow;
+}
+
+#menus a { color:#FFF; }
+#menus ul li
+{
+	float:left;
+}
+#menus li a span
+{
+	display:block;
+	width:100px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	
+	padding:0;
+	margin:0;
+	
+	border-left:1px solid #906;
+}
+#menus li a span:hover
+{ 
+	background-color:#906;
+	/*text-decoration:none;//此句为何不能发挥作用？*/
+}
+#menus li a:hover {text-decoration:none}
+
+#footer1
+{
+	width:100%;
+	height:auto;
+	
+	margin-top:20px;
+	
+	background-color:#CCC;
+	
+	border-top:2px solid gray;
+}
+
+#footer
+{
+	width:980px;
+	height:60px;
+	
+	margin:0 auto;
+	
+	text-align:center;
+}
+#footer ul
+{
+	width:980px;
+	height:50px;
+	
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+#footer li
+{
+	width:980px;
+	height:25px;
+	line-height:25px;
+}
+
+#nav
+{
+	width:968px;
+	height:30px;
+	
+	margin:0 auto;
+	
+	padding-left:10px;
+	
+	line-height:30px;
+	
+	background-image:url(linksbj.gif);
+	background-repeat:repeat-x;
+	
+	border:1px solid gray;
+}
+#nav a
+{
+	font-size:12px;
+	font-weight:bold;
+}
+
+#wrap1000
+{
+	width:1000px;
+	height:auto;
+	
+	margin:0 auto;
+	padding:0;
+	
+	//border:1px solid green;
+}
+#list
+{
+	height:950px;
+}
+#list ul
+{
+	float:left;
+	
+	text-align:center;
+	
+	width:142px;
+	height:210px;
+	
+	border:1px solid gray;
+	
+	/*此处的尺寸是如何计算出来的？我不知道，耗时很久也没有找到方法*/
+	margin-left:10px;
+	margin-right:6px;
+	margin-bottom:15px;
+	
+	margin-top:10px;
+	
+	padding:3px 3px 1px 3px;
+}
+#list ul:hover
+{
+	border:1px solid #F6F;
+}
+.pic
+{
+	width:140px;
+	height:180px;
+}
+.title 
+{
+	height:15px;
+	width:142px;	
+	
+	text-align:15px;
+		
+	margin-top:8px;
+	padding:0;
+	//border:1px solid gray;	
+	overflow:hidden;
+}
+.page
+{
+	width:980px;
+	height:70px;
+	
+	
+	
+	text-align:center;
+	
+	font-size:14px;
+	
+	
+	
+	margin:0 auto;	
+	
+	//border:1px solid red;
+}
+.page li
+{
+	display:inline;	
+	margin-right:10px;
+}
+.page a
+{
+	border-bottom:2px solid #999;
+	height:20px;
+	display:inline-block;
+	
+	padding:2px;
+}
+.current
+{
+	font-size:40px;
+	color:#F6C;
+	margin:0 6px;
+	padding:0;
+	
+	border:0 none;
+}
+.topicnav
+{
+	width:980px;
+	height:30px;
+	
+	border-bottom:1px solid gray;
+	
+	margin-bottom:20px;
+	
+	background-image:url(linksbj.gif);
+	background-repeat:repeat-x;
+}
+.topicnav span
+{
+	//width:980px;
+	height:30px;
+	
+	line-height:30px;
+	
+	font-size:14px;
+	font-weight:bold;
+	color:#F09;
+	
+	display:block;
+	
+	margin:0;
+	
+	padding-left:30px;
+	
+	float:left;
+	
+	//border:1px solid gray;
+	
+	background-image:url(bg.gif);
+	background-repeat:no-repeat;
+	background-position:-105px -55px;
+	//background-color:#CCC;
+	
+	//background-image:url(linksbj.gif);
+	background-repeat:repeat-x;
+}
+#suggestPic
+{
+	width:980px;
+	height:490px;
+	
+	text-align:center;
+	
+	margin:0 auto;
+	
+	border:1px solid gray;
+}
+#sugpic ul
+{
+	float:left;
+	width:150px;
+	height:220px;
+	
+	margin-left:13px;
+	
+	//border:1px solid red;
+}
+.sugtitle
+{
+	width:140px;
+	height:30px;
+	
+	line-height:30px;
+	
+	overflow:hidden;
+	
+	//border:1px solid gray;
+}
+.img
+{
+	width:140px;
+	height:180px;
+	//margin:0;
+	//padding:0;
+	border:1px solid gray;
+}
+.img:hover { border:1px solid #F6C; }

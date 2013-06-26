@@ -6,7 +6,7 @@
 		<tr>
 			<td><a href="{$addUrl}?which=add">新增</a></td>
 			<td><a href="#" onclick="edit('{$editUrl}')">编辑</a></td>
-			<td onclick='deleteAlPic("{$deleteUrl}","albumIds")'>删除</td>			
+			<td onclick='deleteAlPic("{$deleteUrl}","albumIds",1)'>删除</td>			
 		</tr>
 	</table>
 </p>
@@ -21,12 +21,16 @@
 	{if $td|@count neq 0}{*这句是什么意思？*}
 		{section name=td loop=$td }
 		<tr>
-			<td><input type="checkbox" name="boxes[]" value="{$td[td].topicId}=>{$td[td].albumName}=>{$td[td].thumbUrl}=>{$td[td].id}=>{$td[td].ln}" /></td>
+			<td><input type="checkbox" name="boxes[]" value="{$td[td].topicId}=>{$td[td].albumName}=>{$td[td].thumbUrl}=>{$td[td].id}=>{$td[td].ln}" id="{$td[td].id}" /></td>
 			{*<td><input type="checkbox" name="boxes[]" value='{$td[td].topicId},{$td[td].albumName},{$td[td].thumbUrl},{$td[td].id}' /></td>*}
 			{*<td>{$smarty.section.td.index+1}</td>*}
 			<td>{$td[td].id}</td>
 			<td>{$td[td].albumName}</td>
-			<td><a href="{$uploadUrl}?id={$td[td].id}">上传图片</a></td>
+			<td>
+				<a href="{$uploadUrl}?id={$td[td].id}">上传图片</a>&nbsp;
+				<a href="#" onclick="editAn('{$editUrl}','{$td[td].id}')">编辑</a>&nbsp;
+				<a href="#" onclick='deleteAnAlPic("{$deleteUrl}","{$td[td].id}","albumIds")'>删除</a>	
+			</td>
 		</tr>
 		{/section}
 		

@@ -1,52 +1,53 @@
-<!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Index</title>
-<link rel="stylesheet" style="text/css" href="{$css1}">
-<link rel="stylesheet" style="text/css" href="{$head}">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>主页</title>
+<link style="text/css" rel="stylesheet" href="{$css}">
+<script type="text/javascript">
+function addFavorite()
+{
+	if( document.all )
+	{
+		window.external.addFavorite("{$home}","收藏夹");
+	}
+	else if( window.sidebar )
+	{
+		window.sidebar.addPanel("美女网","{$home}","");
+	}
+}
+	
+</script>
 </head>
+
 <body>
-<div class="header">
-	<div class="tip">
-	<div class="t">
-		<p>天气变凉啦，早晚温差较大，大家注意防寒保暖，多添衣服，祝各位工作和学习愉快 -_-</p>
-		<ul>
-			<li>
-				<img src="http://www.166122.com/themes/images/a-home.gif" />
-				<span>设为首页</span>
-			</li>
-			<li>
-				<img src="http://www.166122.com/themes/images/a-clo.gif"  />
-				<span>加入收藏</span>
-			</li>
-			<li>
-				<img src="http://www.166122.com/themes/images/a-lang.gif" />
-				<span>放到桌面</span>
-			</li>		
-		</ul>
-		</div>
-	</div>
-	<div class="ls">
-		<div class="logo">
-			<img src="http://www.166122.com/themes/images/logo.gif" />
-		</div>
-		<div class="search">
-			<p><input type="text" name="keyword" /></p>
-		</div>
-	</div>
-	<div class="menu">
-		<div class="u">
-		<ul>
-			<li><a href="#">首页</a></li>
-			<li><a href="#">日本美女</a></li>
-			<li><a href="#">中国美女</a></li>
-			<li><a href="#">韩国美女</a></li>
-			<li><a href="#">欧美美女</a></li>
-			<li><a href="#">明星模特</a></li>
-			<li><a href="#">性感美女</a></li>
-			<li><a href="#">清纯美女</a></li>
-			<li><a href="#">美女自拍</a></li>
-		</ul>
-		</div>
-	</div>
+<!--topnav start-->
+<div id="topnav">
+	<ul>
+    	<li class="left"></li>
+        <li class="right">
+        	<a href="#">设为首页</a>
+            |
+            <a href="#" onclick="addFavorite()">收藏起来下次看吧！</a>
+        </li>
+     </ul>
+</div>
+<!--topnav end-->
+<!--header start-->
+<div id="header">
+	<!--logo start-->	
+    <div id="logo"> 
+    	<img src="{$pre}logo.jpg" style="width:280px;height:100px;" />   	        
+    </div>
+    <!--logo end-->
+    <!--导航栏-->
+    <div id="nav">    	
+    	<ul>
+        	<li><a href="#"><span>首页</span></a></li>
+        	{section name=topic loop=$TopicData}
+            	<li><a href="{$linkTopic}{$TopicData[topic]["id"]}"><span>{$TopicData[topic]["topicName"]}</span></a></li>
+            {/section}            
+        </ul>       
+    </div>
+    <!--导航栏结束-->
 </div>
