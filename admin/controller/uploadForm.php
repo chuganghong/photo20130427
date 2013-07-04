@@ -4,6 +4,9 @@
 */
 require_once('../common/include.php');
 
+startSession();//开启SESSION会话
+checkLogin();//检测是否登录后台
+
 $albumId = _filter($_GET['id']);  //图集ID
 //var_dump($albumId);  //test
 

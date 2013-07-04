@@ -39,14 +39,7 @@ function addFavorite()
         	<li><a href="{$home}"><span>首页</span></a></li>
         	{section name=topic loop=$TopicData}
             	<li><a href="{$linkTopic}{$TopicData[topic]["id"]}"><span>{$TopicData[topic]["topicName"]}</span></a></li>
-            {/section}
-            <!--
-            <li><a href="#"><span>美女写真</span></a></li>
-            <li><a href="#"><span>丝袜美女</span></a></li>
-            <li><a href="#"><span>明星模特</span></a></li>
-            <li><a href="#"><span>日韩美女</span></a></li>
-            <li><a href="#"><span>动漫美女</span></a></li>
-            -->
+            {/section}           
         </ul>
    </div>
 </div>
@@ -97,8 +90,8 @@ function addFavorite()
     <div id="sugpic">
     	{section name=album loop=$BRA}    	
     		<ul>
-        		<li class="img"><a href="#"><img src="{$BRA[album]["thumbUrl"]}" alt="{$BRA[album]['albumName']}" title="{$BRA[album]['albumName']}" style="width:140px;height:180px;" /></a></li>
-            	<li class="sugtitle"><a href="#">{$BRA[album]['albumName']}</a></li>
+        		<li class="img"><a href="{$linkPic}{$BRA[album]['id']}"><img src="{$BRA[album]["thumbUrl"]}" alt="{$BRA[album]['albumName']}" title="{$BRA[album]['albumName']}" style="width:140px;height:180px;" /></a></li>
+            	<li class="sugtitle"><a href="{$linkPic}{$BRA[album]['id']}">{$BRA[album]['albumName']}</a></li>
         	</ul>
         {/section}        
     </div>

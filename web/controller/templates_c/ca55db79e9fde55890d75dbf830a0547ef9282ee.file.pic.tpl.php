@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-26 14:28:59
+<?php /* Smarty version Smarty-3.1.12, created on 2013-07-03 17:01:03
          compiled from "D:\wamp\www\GitHub\photo20130427\web\templates\pic.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:200051c91142db73a4-75822821%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ca55db79e9fde55890d75dbf830a0547ef9282ee' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\web\\templates\\pic.tpl',
-      1 => 1372256936,
+      1 => 1372870808,
       2 => 'file',
     ),
   ),
@@ -136,9 +136,10 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['topic']['last']       = ($_s
     <div id="mainTitle">
     	<div class="btn">
         	<a href="<?php echo $_smarty_tpl->tpl_vars['home']->value;?>
-" title="strstr">网站首页</a>
+" title="网站首页">网站首页</a>
             <a href="<?php echo $_smarty_tpl->tpl_vars['topic']->value;?>
-" title="strrchr"><?php echo $_smarty_tpl->tpl_vars['ATN']->value;?>
+" title="<?php echo $_smarty_tpl->tpl_vars['ATN']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['ATN']->value;?>
 </a>
         </div>
         <h1><?php echo $_smarty_tpl->tpl_vars['AAN']->value;?>
@@ -148,12 +149,25 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['topic']['last']       = ($_s
     	温馨提示：点击图片查看下一页
    	</div>
     <div id="mainPic">
-    	<p class="mainPicImg"><a href="<?php echo $_smarty_tpl->tpl_vars['linkPageNext']->value;?>
+    <script type="text/javascript">
+    function noPic()
+    {
+    	alert("这是最后一张了！");
+    }
+    </script>
+    	<?php if ($_smarty_tpl->tpl_vars['linkPageNext']->value=="a"){?><!--奇怪：当$linkPageNext赋值为0时，此表达式总是成立-->
+    		<p class="mainPicImg"><a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['AP']->value[$_smarty_tpl->tpl_vars['CP']->value]["pictureUrl"];?>
+"  alt="<?php echo $_smarty_tpl->tpl_vars['AAN']->value;?>
+" onclick="noPic()" /></a></p>
+    	<?php }else{ ?>
+    		<p class="mainPicImg"><a href="<?php echo $_smarty_tpl->tpl_vars['linkPageNext']->value;?>
 "><img src="<?php echo $_smarty_tpl->tpl_vars['AP']->value[$_smarty_tpl->tpl_vars['CP']->value]["pictureUrl"];?>
 "  alt="<?php echo $_smarty_tpl->tpl_vars['AAN']->value;?>
 " /></a></p>
+        <?php }?>
         <p><?php echo $_smarty_tpl->tpl_vars['AAN']->value;?>
 </p>
+        
     </div>
     <?php echo $_smarty_tpl->tpl_vars['PS']->value;?>
 <!--分页-->

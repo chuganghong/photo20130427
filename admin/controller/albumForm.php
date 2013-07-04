@@ -3,6 +3,10 @@
 	图集管理FORM
 */
 require_once('../common/include.php');
+
+startSession();//开启SESSION会话
+checkLogin();//检测是否登录后台
+
 if( !isset($_GET['which']) )
 {
 	die();
@@ -90,29 +94,23 @@ else if( $which=='edit' )
 	$albumId = _filterStr($albumId);
 	$data = $admin->getRec($albumId);  //获取推荐到首页等的记录
 	
+	
 	$rec = '';
 	$tips = array('推荐到首页中图','推荐到首页文字','推荐到首页小图','推荐到图片展示页的精选');
 	for($i=1;$i<=4;$i++)
 	{
 		if(in_array($i,$data) )
 		{
-			$rec .= '<input type="checkbox" name="rec[]" value="' . $i . '" checked="true" />' . $tips[$i-1];
+			$rec .= '<span class="operation" style="margin-left:10px"><input type="checkbox" name="rec[]" value="' . $i . '" checked="true" />' . $tips[$i-1] . '</span>';
 		}
 		else
 		{
-			$rec .= '<input type="checkbox" name="rec[]" value="' . $i . '" />' . $tips[$i-1];
+			$rec .= '<span class="operation" style="margin-left:10px"><input type="checkbox" name="rec[]" value="' . $i . '" />' . $tips[$i-1] . '</span>';
 		}		
-	}
+	}	
 	
 	$jsonRec = json_encode($data);   //将旧的recommend记录转为json形式
-	//$RecStr = serialize($data);
-	//$RecStr = addslashes($RecStr);
-	//var_dump($RecStr);  //test
 	
-	//var_dump($jsonRec);  //test
-	//$action .= '?oldRec=' . $jsonRec;
-	//$action .= '?oldRec=' . $RecStr;
-	//var_dump($action);  //test
 	$smarty->assign('action',$action);
 	
 	

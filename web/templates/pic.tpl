@@ -61,8 +61,8 @@ function addFavorite()
     </div>
     <div id="mainTitle">
     	<div class="btn">
-        	<a href="{$home}" title="strstr">网站首页</a>
-            <a href="{$topic}" title="strrchr">{$ATN}</a>
+        	<a href="{$home}" title="网站首页">网站首页</a>
+            <a href="{$topic}" title="{$ATN}">{$ATN}</a>
         </div>
         <h1>{$AAN}</h1>
     </div>
@@ -70,8 +70,19 @@ function addFavorite()
     	温馨提示：点击图片查看下一页
    	</div>
     <div id="mainPic">
-    	<p class="mainPicImg"><a href="{$linkPageNext}"><img src="{$AP[$CP]["pictureUrl"]}"  alt="{$AAN}" /></a></p>
+    <script type="text/javascript">
+    function noPic()
+    {
+    	alert("这是最后一张了！");
+    }
+    </script>
+    	{if $linkPageNext == "a"}<!--奇怪：当$linkPageNext赋值为0时，此表达式总是成立-->
+    		<p class="mainPicImg"><a href="#"><img src="{$AP[$CP]["pictureUrl"]}"  alt="{$AAN}" onclick="noPic()" /></a></p>
+    	{else}
+    		<p class="mainPicImg"><a href="{$linkPageNext}"><img src="{$AP[$CP]["pictureUrl"]}"  alt="{$AAN}" /></a></p>
+        {/if}
         <p>{$AAN}</p>
+        
     </div>
     {$PS}<!--分页-->
     

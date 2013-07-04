@@ -28,15 +28,18 @@ function noEmpty(isAllow)   //防止提交空表单。当isAllow为0时，此函
 }
 </script>
 <form action="{$action}" method="post" enctype="multipart/form-data">
-<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
-<br />
+<p>
+	<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
+</p>
 
-<input type="file" name="image" id="upImage"  size="60" />
-
+<p>
+	<input type="file" name="image" id="upImage"  size="60" />
+</p>
 <input type="hidden" name="which" value="1" id="which"  />
 <input type="hidden" name="albumId" value="{$albumId}" />
-<br />
-<input type="submit" value="上传" onmouseover="noEmpty({$isAllow})"/>
+<p>
+	<input type="submit" value="上传" onmouseover="noEmpty({$isAllow})"/>
+</p>
 </form>
 <hr>
 {if $ln == 1 }

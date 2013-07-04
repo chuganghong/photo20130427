@@ -25,3 +25,24 @@ require_once('Smarty.class.php');
 require_once('db.class.php');
 $smarty = new Smarty;
 $db = new db('localhost','root','','photo');
+
+/**
+ * 开启SESSION会话
+ */
+function startSession()
+{
+	if(!isset($_SESSION))
+		session_start();
+}
+
+/**
+ * 检测是否登录后台
+ */
+function checkLogin()
+{
+	if(!isset($_SESSION['adminName']))
+	{
+		$msg = '你没有登录！';
+		die($msg);
+	}
+}

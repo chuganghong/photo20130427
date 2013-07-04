@@ -1,15 +1,31 @@
 {*图片管理*}
 <script type="text/javascript" src="{$js}"></script>
-<p>图片列表</p>
+<style type="text/css">
+table
+{
+	border-collapse:collapse;
+	width:80%;
+	margin:0 auto;
+}
+td,th
+{
+	border:1px solid gray;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;
+	
+}
+</style>
+
 <p>
-	<table border="1">
+	<table>
 		<tr>			
 			<td><button onclick='deleteAlPic("{$deletePicUrl}","picIds",1)'>删除</button></td>			
 		</tr>
 	</table>
 </p>
 <p>
-<table border="1" width="80%">
+<table>
 	<tr>
 		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)" /></th>
 		{section name=th loop=$th}

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-08 03:30:19
+<?php /* Smarty version Smarty-3.1.12, created on 2013-06-27 10:10:46
          compiled from "D:\wamp\www\GitHub\photo20130427\admin\templates\albumForm2.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1804051aff0a8076431-05477191%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a10c36b5874efa871486874c2bb5b03a14e4442a' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\admin\\templates\\albumForm2.tpl',
-      1 => 1370661795,
+      1 => 1372327838,
       2 => 'file',
     ),
   ),
@@ -72,32 +72,36 @@ function isChange()   //识别是否更新了图集的缩略图，1为更新了�
 
 <form action="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " method="post" enctype="multipart/form-data">
-选择栏目：
+<p>选择栏目：
 <select name="topic">
 	<?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['topicName']->value,'selected'=>$_smarty_tpl->tpl_vars['topicId']->value),$_smarty_tpl);?>
 
 </select>
-<br />
-标题：
-<input type="text" name="albumName"  value="<?php echo $_smarty_tpl->tpl_vars['albumName']->value;?>
-" />
-<br />
+</p>
+<p>标题：
+	<input type="text" name="albumName"  value="<?php echo $_smarty_tpl->tpl_vars['albumName']->value;?>
+" size="50"/>
+</p>
+<p>
 操作：<?php echo $_smarty_tpl->tpl_vars['recommend']->value;?>
 
-
-图集封面：<br />
-<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
-<br />
-
-<input type="file" name="image" id="upImage"  size="60" />
-
+</p>
+<p>选择图集封面：</p>
+<p>
+	<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
+</p>
+<p>
+	<input type="file" name="image" id="upImage"  size="60" />
+</p>
 <input type="hidden" name="which" value="<?php echo $_smarty_tpl->tpl_vars['which']->value;?>
 " id="which"  />
 <input type="hidden" name="albumId" value="<?php echo $_smarty_tpl->tpl_vars['albumId']->value;?>
 "  />
 <input type="hidden" name="change" id="changeId" />
-<br />
-<input type="submit" value="更新" onmouseover="isChange()"/>
+
+<p>
+	<input type="submit" value="更新" onmouseover="isChange()"/>
+</p>
 </form>
 <hr>
 <p id="tip"></p>

@@ -58,7 +58,7 @@ class IndexPartB extends IndexPart implements TinyPic,Text,MediumPic
 /**
  * 为首页提供数据
  */
-$recommend = new RecommendAlbum($db);
+$recommend = RecommendAlbum::getRecommendAlbumInstance($db);
 
 //获取最新图集数据
 $num = 11;  //设置首页“最新发布”栏目下的数据数量
@@ -67,6 +67,9 @@ $start = 0;
 $new = $recommend->getNewAlbum($start,$num,$topicId);
 
 //获取partA数据
+/**
+ *$topicIdA是栏目ID
+ */
 $topicIdA = 1;
 $partA = new IndexPartA($recommend,$topicIdA);
 $Aname = $partA->getTopicName();

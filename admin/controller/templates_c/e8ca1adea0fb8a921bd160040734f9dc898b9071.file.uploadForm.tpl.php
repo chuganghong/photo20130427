@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-06 05:24:45
+<?php /* Smarty version Smarty-3.1.12, created on 2013-06-27 09:35:16
          compiled from "D:\wamp\www\GitHub\photo20130427\admin\templates\uploadForm.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1769651b01d1d61b185-06171232%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e8ca1adea0fb8a921bd160040734f9dc898b9071' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\admin\\templates\\uploadForm.tpl',
-      1 => 1369885890,
+      1 => 1372325712,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_51b01d1d838507_31564256',
   'variables' => 
   array (
     'action' => 0,
@@ -25,8 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pictureUrl' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51b01d1d838507_31564256',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51b01d1d838507_31564256')) {function content_51b01d1d838507_31564256($_smarty_tpl) {?>
 
@@ -59,17 +59,20 @@ function noEmpty(isAllow)   //防止提交空表单。当isAllow为0时，此函
 </script>
 <form action="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " method="post" enctype="multipart/form-data">
-<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
-<br />
+<p>
+	<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
+</p>
 
-<input type="file" name="image" id="upImage"  size="60" />
-
+<p>
+	<input type="file" name="image" id="upImage"  size="60" />
+</p>
 <input type="hidden" name="which" value="1" id="which"  />
 <input type="hidden" name="albumId" value="<?php echo $_smarty_tpl->tpl_vars['albumId']->value;?>
 " />
-<br />
-<input type="submit" value="上传" onmouseover="noEmpty(<?php echo $_smarty_tpl->tpl_vars['isAllow']->value;?>
+<p>
+	<input type="submit" value="上传" onmouseover="noEmpty(<?php echo $_smarty_tpl->tpl_vars['isAllow']->value;?>
 )"/>
+</p>
 </form>
 <hr>
 <?php if ($_smarty_tpl->tpl_vars['ln']->value==1){?>

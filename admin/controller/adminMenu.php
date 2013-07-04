@@ -1,5 +1,8 @@
 <?php
 require_once('../common/include.php');
+startSession();//开启SESSION会话
+checkLogin();//检测是否登录后台
+
 $url_1 = 'topicManage.php';
 $url_2 = 'albumManage.php';
 $url_3 = 'pictureManage.php';

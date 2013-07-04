@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * 2013年5月22日
  * 分页类
  * 经过测试，此类可以正常使用。但是，测试此类，耗时非常非常多，让我抓狂，最后，通过看以前的代码，才
@@ -39,14 +39,14 @@ class page
 		if( $this->current_page == 1 )
 		{
 			
-			$str = '上一页';
+			$str = '<td>上一页</td>';
 			$str .= ' ';
 		}
 		else if( $this->current_page>1 )
 		{
 			$pre_page = $this->current_page-1;
 			
-			$str = '<a href="' . $this->url . '=' . $pre_page . '">上一页</a>';
+			$str = '<td><a href="' . $this->url . '=' . $pre_page . '">上一页</a></td>';
 			$str .= ' ';
 		}
 		echo $str;
@@ -58,14 +58,14 @@ class page
 		if( $this->current_page == $this->total_page || $this->total_page == 0 )
 		{
 			
-			$str = '下一页';
+			$str = '<td>下一页</td>';
 			$str .= ' ';
 		}
 		else if( $this->current_page<$this->total_page )
 		{
 			$next_page = $this->current_page + 1;
 			
-			$str = '<a href="' . $this->url . '=' . $next_page . '">下一页</a>';
+			$str = '<td><a href="' . $this->url . '=' . $next_page . '">下一页</a></td>';
 			$str .= ' ';
 		}
 		echo $str;
@@ -74,7 +74,7 @@ class page
 	//首页
 	function show_first_page()
 	{
-		$str = '<a href="' . $this->url . '=1' . '">首页</a>';
+		$str = '<table><tr><td><a href="' . $this->url . '=1' . '">首页</a></td>';
 		$str .= ' ';
 		
 		echo $str;
@@ -83,7 +83,7 @@ class page
 	//末页
 	function show_end_page()
 	{
-		$str = '<a href="' . $this->url . '=' . $this->total_page . '">末页</a>';
+		$str = '<td><a href="' . $this->url . '=' . $this->total_page . '">末页</a></td></tr></table>';
 		echo $str;
 	}
 	
@@ -91,7 +91,7 @@ class page
 	function show_go_page($page)
 	{
 		$this->js();   //跳转到某页的JS
-		$str = '跳到第';
+		$str = '<td>跳到第';
 		$str .= '<select name="page" onchange= "go()" id="mySelect">';
 		for($i=1;$i<=$this->total_page;$i++)
 		{
@@ -101,7 +101,7 @@ class page
 			}
 			$str .= '<option value="' . $i . '">' . $i . '</option>';
 		}
-		$str .= '</select>页';
+		$str .= '</select>页</td>';
 		$str .= ' ';
 		
 		echo $str;

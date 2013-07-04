@@ -5,10 +5,25 @@
 class RecommendAlbum
 {
 	private $db;   //数据库操作类
+	static private $instance;   //本类实例
 	
-	public function __construct($db)
+	private function __construct($db)
 	{
 		$this->db = $db;
+	}
+	
+	/**
+	 * 获取本类的实例，单例模式
+	 * @param object $db  //数据类的实例
+	 * @return object RecommendAlbum   //本类的实例
+	 */
+	static public function getRecommendAlbumInstance($db)
+	{
+		if( self::$instance==null )
+		{
+			self::$instance = new RecommendAlbum($db);
+		}
+		return self::$instance;
 	}
 	
 	/**

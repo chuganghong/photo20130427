@@ -44,7 +44,7 @@ class PartC extends IndexPart implements OTinyPic
 
 
 //获取partA数据
-$recommendAlbum = new RecommendAlbum($db);
+$recommendAlbum = RecommendAlbum::getRecommendAlbumInstance($db);
 $topicId = mysql_real_escape_string(trim($_GET['topicId']));
 $albumId = mysql_real_escape_string(trim($_GET['albumId']));
 $partA = new PartA($recommendAlbum, $topicId);

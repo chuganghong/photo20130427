@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-07 08:25:36
+<?php /* Smarty version Smarty-3.1.12, created on 2013-06-27 09:32:46
          compiled from "D:\wamp\www\GitHub\photo20130427\admin\templates\topicForm.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1728451b19900ab1119-73157572%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '53e50ae48213ade0aff11b102e9d02d77be644f7' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\admin\\templates\\topicForm.tpl',
-      1 => 1369550670,
+      1 => 1372325559,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_51b19900c7ff72_07445266',
   'variables' => 
   array (
     'url' => 0,
@@ -24,21 +26,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'value' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51b19900c7ff72_07445266',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51b19900c7ff72_07445266')) {function content_51b19900c7ff72_07445266($_smarty_tpl) {?>
 <form action="<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
 " method="post">
-<input type="text" name="topicName" value="<?php echo $_smarty_tpl->tpl_vars['topicName']->value;?>
+<p>
+	<input type="text" name="topicName" value="<?php echo $_smarty_tpl->tpl_vars['topicName']->value;?>
 " />
+</p>
 <input type="hidden" name="which" value="<?php echo $_smarty_tpl->tpl_vars['which']->value;?>
 " />
 <input type="hidden" name="topicId[]" value="<?php echo $_smarty_tpl->tpl_vars['topicId']->value;?>
 " />
-<br />
+<p>
 <input type="submit" value="<?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 " />
 
 <input type="reset" value="重置" />
+</p>
 </form><?php }} ?>

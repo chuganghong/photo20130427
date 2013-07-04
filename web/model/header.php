@@ -3,7 +3,7 @@
  * header部分的数据
  */
 //require('RecommendAlbum.class.php');
-$recommend = new RecommendAlbum($db);
+$recommend = RecommendAlbum::getRecommendAlbumInstance($db);
 //所有栏目数据
 $num = 8;
 $TopicData = $recommend->getAllTopic($num);

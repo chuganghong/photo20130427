@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * 为list.php提供数据
  */
 require('RecommendAlbum.class.php');
@@ -51,7 +51,7 @@ class ListPartC extends IndexPart implements TinyPic
 	}
 }
 
-$recommendAlbum = new RecommendAlbum($db);
+$recommendAlbum = RecommendAlbum::getRecommendAlbumInstance($db);
 $topicId = mysql_real_escape_string(trim($_GET['topicId']));
 
 //获取显示分页符所需要的数据

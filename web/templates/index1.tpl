@@ -13,26 +13,32 @@
                 	<ul>
                     	{section name=new loop=$new}
                     		<li><a href="{$linkNew}topicId={$new[new]["topicId"]}&albumId={$new[new]["id"]}" target="_blank"><span class="new_list_title">{$new[new]['albumName']}</span></a><span class="date">06-20</span></li>
-                    	{/section}
-                    	<!--
-                    	<li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        -->
+                    	{/section}                    	
                     </ul>
                 </div>
                 <div id="search">
-                	<form action="#" method="post">
-                    	<input class="search_area" type="text" value="美女写真 清纯美女 自拍 ..." />
-                        <input class="search_button" value="" type="submit"  />
+                <script type="text/javascript">
+                function keyDisappear(id)
+                {
+                	document.getElementById(id).value = '';
+                }
+                function noEmpty(id)
+                {
+                	if(document.getElementById(id).value)
+                	{	
+                		alert("ye");//test
+                		document.getElementById("searchForm").submit();
+                	}
+                	else                	
+                	{
+                		alert("no");//test
+                		alert('请输入搜索关键词');
+                	}
+                }
+                </script>
+                	<form action="{$searchUrl}" method="post" id="searchForm">
+                    	<input class="search_area" type="text" name="keyWords" value="美女写真 清纯美女 自拍 ..."  id="keyWords" onclick="keyDisappear(this.id)" />
+                        <input class="search_button" value="" type="button"  id="searchButton" onclick='noEmpty("keyWords")' />
                     </form>
                 </div>
             </div>

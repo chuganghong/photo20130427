@@ -127,9 +127,10 @@ class upload
 	function up($dir)
 	{
 		$this->isAllow();
-		$newName = time() . mt_rand() . '.' . $this->getSuffix();
-		$this->filepath = $dir . '/' . $newName;
-		$this->newName = $_SERVER['DOCUMENT_ROOT'] . '/' . $this->filepath;
+		$newName = time() . mt_rand() . '.' . $this->getSuffix();	
+		$this->filepath = $dir . '/' . $newName;	
+		$filepath = $_SERVER['DOCUMENT_ROOT'] . $this->filepath;
+		$this->newName = $filepath;
 		
 		
 		$bool = move_uploaded_file($this->tmp_name,$this->newName);

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-08 09:21:31
+<?php /* Smarty version Smarty-3.1.12, created on 2013-06-27 09:29:09
          compiled from "D:\wamp\www\GitHub\photo20130427\admin\templates\albumManage.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:90951aa0035a56793-43839663%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0674829238b1ee40f4d68b76f263ce805e1f4239' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\admin\\templates\\albumManage.tpl',
-      1 => 1370683285,
+      1 => 1372325338,
       2 => 'file',
     ),
   ),
@@ -32,9 +32,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_51aa0035c961c2_50875987')) {function content_51aa0035c961c2_50875987($_smarty_tpl) {?>
 <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['js']->value;?>
 "></script>
-<p>图集列表</p>
+<style type="text/css">
+table
+{
+	border-collapse:collapse;
+	width:80%;
+	margin:0 auto;
+}
+td,th
+{
+	border:1px solid gray;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;
+	
+}
+</style>
 <p>
-	<table border="1">
+	<table>
 		<tr>
 			<td><a href="<?php echo $_smarty_tpl->tpl_vars['addUrl']->value;?>
 ?which=add">新增</a></td>
@@ -46,7 +61,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</table>
 </p>
 <p>
-<table border="1" width="80%">	
+<table>	
 	<tr>
 		<th><input type="checkbox" name="box" id="check" onchange="chose(this.id)"  /></th>
 		<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['th'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['th']);

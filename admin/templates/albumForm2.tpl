@@ -38,27 +38,31 @@ function isChange()   //识别是否更新了图集的缩略图，1为更新了�
 </script>
 
 <form action="{$action}" method="post" enctype="multipart/form-data">
-选择栏目：
+<p>选择栏目：
 <select name="topic">
 	{html_options options=$topicName selected=$topicId}
 </select>
-<br />
-标题：
-<input type="text" name="albumName"  value="{$albumName}" />
-<br />
+</p>
+<p>标题：
+	<input type="text" name="albumName"  value="{$albumName}" size="50"/>
+</p>
+<p>
 操作：{$recommend}
-
-图集封面：<br />
-<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
-<br />
-
-<input type="file" name="image" id="upImage"  size="60" />
-
+</p>
+<p>选择图集封面：</p>
+<p>
+	<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
+</p>
+<p>
+	<input type="file" name="image" id="upImage"  size="60" />
+</p>
 <input type="hidden" name="which" value="{$which}" id="which"  />
 <input type="hidden" name="albumId" value="{$albumId}"  />
 <input type="hidden" name="change" id="changeId" />{* 当此处的id和onmouseover的函数同名时，不知为何，JS不能正确运行。*}
-<br />
-<input type="submit" value="更新" onmouseover="isChange()"/>
+
+<p>
+	<input type="submit" value="更新" onmouseover="isChange()"/>
+</p>
 </form>
 <hr>
 <p id="tip"></p>

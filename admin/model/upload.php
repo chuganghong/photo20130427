@@ -19,16 +19,14 @@ if( $which == '1' )
 {
 	//本地图片上传
 	$upload = new upload('image');
-	$dir1 = 'GitHub/photo20130427/uploads';
-	//$dir1 = 'uploads';
-	//$dir = DR . $dir1;
+	/**
+	 *$dir1设置保存上传图片的目录，若要完善这个目录的话，就需实现自动创建目录的功能
+	 */
+	$dir1 = dirname(dirname(dirname($_SERVER['SCRIPT_NAME']))) . '/uploads';	
+	//$dir1 = $_SERVER['DOCUMENT_ROOT'] . $dir;
 	if( $upload->up($dir1) )
-	{
-		//数据库操作
-		//$filepath = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $dir;
-		$filepath = $upload->getFilepath();
-		//var_dump($filepath);  //test
-		//var_dump($_SERVER['HTTP_HOST']);   //TEST
+	{		
+		$filepath = $upload->getFilepath();		
 		$pictureUrl = _filter($filepath);
 		$ln = 1;
 	}

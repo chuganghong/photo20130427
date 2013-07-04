@@ -5,12 +5,10 @@
 include('../common/include.php');
 session_start();
 
-if( !isset($_SESSION['adminName']) )
-{
-	die('你没有登录！');
-}
+checkLogin();//检测是否登录后台
 
-$which = $_GET['which'];
+
+$which = 'admin';
 
 
 

@@ -2,18 +2,13 @@
 
 <script type="text/javascript">
 function choseLocal(id)   //上传本地图片
-{
-	//alert("start choseLocal");//test
-	document.getElementById("upImage").type = "file";
-	//document.getElementById("which").value = "1";
+{	
+	document.getElementById("upImage").type = "file";	
 }
 
 function choseNet()   //变为上传网络图片
-{
-	//alert("start choseNet");//test
-	document.getElementById("upImage").type = "text";
-	//document.getElementById("which").value = "0";
-	
+{	
+	document.getElementById("upImage").type = "text";	
 }
 
 function noEmpty(isAllow)   //防止提交空表单
@@ -29,30 +24,38 @@ function noEmpty(isAllow)   //防止提交空表单
 }
 </script>
 <form action="{$action}" method="post" enctype="multipart/form-data">
-选择栏目：
+
+选择：
 <select name="topic">
 	{html_options options=$topicName selected=$topicId}
 </select>
-<br />
+
+<p>
 标题：
 <input type="text" name="albumName"  value="{$albumName}" />
-<br />
-操作：
+</p>
+<p>
+	<ul>
+		<li>操作：</li>
 <!--<input type="checkbox" name="recommend[]" value="0" />推荐到首页大图-->
-<input type="checkbox" name="recommend[]" value="1" />推荐到首页中图
-<input type="checkbox" name="recommend[]" value="2" />推荐到首页文字
-<input type="checkbox" name="recommend[]" value="3" />推荐到首页小图
-<input type="checkbox" name="recommend[]" value="4" />推荐到图片展示页的精选
-<br />
-图集封面：<br />
-<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
-<br />
-
-<input type="file" name="image" id="upImage"  size="60" />
+        <li><input type="checkbox" name="recommend[]" value="1" />推荐到首页中图</li>
+        <li><input type="checkbox" name="recommend[]" value="2" />推荐到首页文字</li>
+		<li><input type="checkbox" name="recommend[]" value="3" />推荐到首页小图</li>
+		<li><input type="checkbox" name="recommend[]" value="4" />推荐到图片展示页的精选</li>
+	</ul>
+</p>
+<p>图集封面：</p>
+<p>
+	<span onclick = "choseLocal()" id="local">本地图片</span>  <span onclick = "choseNet()" id="net">网络图片</span>
+</p>
+<p>
+	<input type="file" name="image" id="upImage"  size="60" />
+</p>
 
 <input type="hidden" name="which" value="{$which}" id="which"  />
 <input type="hidden" name="albumId" value="{$albumId}"  />
 <input type="hidden" name="isEmpty" value="1" id="isEmpty" />
-<br />
-<input type="submit" value="上传" onmouseover="noEmpty({$isAllow})"/>
+<p>
+	<input type="submit" value="上传" onmouseover="noEmpty({$isAllow})"/>
+</p>
 </form>

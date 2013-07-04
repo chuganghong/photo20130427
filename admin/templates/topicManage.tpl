@@ -1,9 +1,24 @@
 {*栏目管理*}
 <script type="text/javascript" src="{$js}"></script>
+<style type="text/css">
+table
+{
+	border-collapse:collapse;
+	width:80%;
+	margin:0 auto;
+}
+td,th
+{
+	border:1px solid gray;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;
+	
+}
+</style>
 
-<p>栏目列表</p>
 <p>
-	<table border="1">
+	<table >
 		<tr>
 			<td><a href="{$addUrl}?which=add" class="ade" >新增</a></td>
 			<td><a href="#" class="ade" onclick="edit('{$editUrl}')">编辑</a></td>
@@ -12,7 +27,7 @@
 	</table>
 </p>
 <p>
-<table border="1" width="80%">
+<table>
 	<tr>
 		<th><input type="checkbox" id="check" onchange="chose(this.id)" value="0" /></th>
 	{section name=th loop=$th}		

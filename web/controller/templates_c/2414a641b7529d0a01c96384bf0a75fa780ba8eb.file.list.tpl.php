@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-26 14:12:03
+<?php /* Smarty version Smarty-3.1.12, created on 2013-07-03 10:36:56
          compiled from "D:\wamp\www\GitHub\photo20130427\web\templates\list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2023151c8c15d549573-58234472%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2414a641b7529d0a01c96384bf0a75fa780ba8eb' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\web\\templates\\list.tpl',
-      1 => 1372255916,
+      1 => 1372847806,
       2 => 'file',
     ),
   ),
@@ -105,14 +105,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['topic']['last']       = ($_s
 <?php echo $_smarty_tpl->tpl_vars['TopicData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['topic']['index']]["id"];?>
 "><span><?php echo $_smarty_tpl->tpl_vars['TopicData']->value[$_smarty_tpl->getVariable('smarty')->value['section']['topic']['index']]["topicName"];?>
 </span></a></li>
-            <?php endfor; endif; ?>
-            <!--
-            <li><a href="#"><span>美女写真</span></a></li>
-            <li><a href="#"><span>丝袜美女</span></a></li>
-            <li><a href="#"><span>明星模特</span></a></li>
-            <li><a href="#"><span>日韩美女</span></a></li>
-            <li><a href="#"><span>动漫美女</span></a></li>
-            -->
+            <?php endfor; endif; ?>           
         </ul>
    </div>
 </div>
@@ -219,11 +212,15 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['album']['first']      = ($_s
 $_smarty_tpl->tpl_vars['smarty']->value['section']['album']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['album']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['album']['total']);
 ?>    	
     		<ul>
-        		<li class="img"><a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['BRA']->value[$_smarty_tpl->getVariable('smarty')->value['section']['album']['index']]["thumbUrl"];?>
+        		<li class="img"><a href="<?php echo $_smarty_tpl->tpl_vars['linkPic']->value;?>
+<?php echo $_smarty_tpl->tpl_vars['BRA']->value[$_smarty_tpl->getVariable('smarty')->value['section']['album']['index']]['id'];?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['BRA']->value[$_smarty_tpl->getVariable('smarty')->value['section']['album']['index']]["thumbUrl"];?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['BRA']->value[$_smarty_tpl->getVariable('smarty')->value['section']['album']['index']]['albumName'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['BRA']->value[$_smarty_tpl->getVariable('smarty')->value['section']['album']['index']]['albumName'];?>
 " style="width:140px;height:180px;" /></a></li>
-            	<li class="sugtitle"><a href="#"><?php echo $_smarty_tpl->tpl_vars['BRA']->value[$_smarty_tpl->getVariable('smarty')->value['section']['album']['index']]['albumName'];?>
+            	<li class="sugtitle"><a href="<?php echo $_smarty_tpl->tpl_vars['linkPic']->value;?>
+<?php echo $_smarty_tpl->tpl_vars['BRA']->value[$_smarty_tpl->getVariable('smarty')->value['section']['album']['index']]['id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['BRA']->value[$_smarty_tpl->getVariable('smarty')->value['section']['album']['index']]['albumName'];?>
 </a></li>
         	</ul>
         <?php endfor; endif; ?>        

@@ -1,6 +1,9 @@
 <?php
 require_once('../common/include.php');
 
+startSession();//开启SESSION会话
+checkLogin();//检测是否登录后台
+
 $addUrl = 'topicForm.php';
 $editUrl = 'topicForm.php';
 $deleteUrl = '../model/deleteToPic.php';

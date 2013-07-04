@@ -108,21 +108,26 @@ EOT;
 	function showCommonPageB()
 	{
 		$str = '';
+		$link = $this->link;
+		if($this->sum>0):
 		$deadLine = 5;
 		if( $this->currentPage<$deadLine )
 		{
 			$end = 10;
 			for($i=1;$i<=$end;$i++)
 			{
-			if($i==$this->sum):
-			break;
-			endif;
-			if($this->currentPage==$i)
-			{
+				if($i==$this->sum):
 				$str .= <<<EOT
+<li><a href="$link"><span>$i</span></a></li>
+EOT;
+				break;
+				endif;
+				if($this->currentPage==$i)
+				{
+					$str .= <<<EOT
 <li><span class="current">$i</span></li>
 EOT;
-			}
+				}
 				else
 				{
 					$link = $this->link . $i;
@@ -130,39 +135,39 @@ EOT;
 <li><a href="$link"><span>$i</span></a></li>
 EOT;
 				}
-						}
-						}
-						else
-						{
-							$start = $this->currentPage-5;
-							$end = $this->currentPage + 5;
-							if( $end>=$this->sum )
-							{
-								$end = $this->sum;
-							}
-								
-							if( $start<=1 )
-							{
-								$start = 1;
-							}
-							for( $i=$start;$i<=$end;$i++ )
-							{
-								if($this->currentPage==$i)
-								{
-									$str .= <<<EOT
+			}
+		}
+		else
+		{
+			$start = $this->currentPage-5;
+			$end = $this->currentPage + 5;
+			if( $end>=$this->sum )
+			{
+				$end = $this->sum;
+			}					
+			if( $start<=1 )
+			{
+				$start = 1;
+			}
+			for( $i=$start;$i<=$end;$i++ )
+			{
+				if($this->currentPage==$i)
+				{
+					$str .= <<<EOT
 <li class="current"><span>$i</span></li>
 EOT;
-								}
-								else
-								{
-									$link = $this->link . $i;
-									$str .= <<<EOT
+				}
+				else
+				{
+					$link = $this->link . $i;
+					$str .= <<<EOT
 <li><a href="$link"><span>$i</span></a></li>
 EOT;
-								}
-							}
-						}
-						$this->str .= $str;
+				}
+			}
+		}
+		endif;
+		$this->str .= $str;
 	}
 	
 	function showNexPage()

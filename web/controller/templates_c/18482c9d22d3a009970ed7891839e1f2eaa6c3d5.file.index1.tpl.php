@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-06-25 14:36:38
+<?php /* Smarty version Smarty-3.1.12, created on 2013-07-03 06:57:43
          compiled from "D:\wamp\www\GitHub\photo20130427\web\templates\index1.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16251c7dec0e61de4-49803605%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '18482c9d22d3a009970ed7891839e1f2eaa6c3d5' => 
     array (
       0 => 'D:\\wamp\\www\\GitHub\\photo20130427\\web\\templates\\index1.tpl',
-      1 => 1372170995,
+      1 => 1372834578,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'header' => 0,
     'new' => 0,
     'linkNew' => 0,
+    'searchUrl' => 0,
     'linkTA' => 0,
     'Aname' => 0,
     'AtinyPic' => 0,
@@ -78,26 +79,33 @@ topicId=<?php echo $_smarty_tpl->tpl_vars['new']->value[$_smarty_tpl->getVariabl
 &albumId=<?php echo $_smarty_tpl->tpl_vars['new']->value[$_smarty_tpl->getVariable('smarty')->value['section']['new']['index']]["id"];?>
 " target="_blank"><span class="new_list_title"><?php echo $_smarty_tpl->tpl_vars['new']->value[$_smarty_tpl->getVariable('smarty')->value['section']['new']['index']]['albumName'];?>
 </span></a><span class="date">06-20</span></li>
-                    	<?php endfor; endif; ?>
-                    	<!--
-                    	<li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        <li><a href="#">白色迷人衬衣私房靓丽写照</a><span class="date">06-20</span></li>
-                        -->
+                    	<?php endfor; endif; ?>                    	
                     </ul>
                 </div>
                 <div id="search">
-                	<form action="#" method="post">
-                    	<input class="search_area" type="text" value="美女写真 清纯美女 自拍 ..." />
-                        <input class="search_button" value="" type="submit"  />
+                <script type="text/javascript">
+                function keyDisappear(id)
+                {
+                	document.getElementById(id).value = '';
+                }
+                function noEmpty(id)
+                {
+                	if(document.getElementById(id).value)
+                	{	
+                		alert("ye");//test
+                		document.getElementById("searchForm").submit();
+                	}
+                	else                	
+                	{
+                		alert("no");//test
+                		alert('请输入搜索关键词');
+                	}
+                }
+                </script>
+                	<form action="<?php echo $_smarty_tpl->tpl_vars['searchUrl']->value;?>
+" method="post" id="searchForm">
+                    	<input class="search_area" type="text" name="keyWords" value="美女写真 清纯美女 自拍 ..."  id="keyWords" onclick="keyDisappear(this.id)" />
+                        <input class="search_button" value="" type="button"  id="searchButton" onclick='noEmpty("keyWords")' />
                     </form>
                 </div>
             </div>
