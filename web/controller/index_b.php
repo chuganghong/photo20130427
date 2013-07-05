@@ -47,7 +47,8 @@ $smarty->assign('LPB',$linkPicB);
 
 
 
-$pre = '/GitHub/photo20130427/web/templates/style/';
+//$pre = '/GitHub/photo20130427/web/templates/style/';
+$pre = dirname(dirname($_SERVER['SCRIPT_NAME'])) . '/templates/style/';
 
 $smarty->assign('css',$pre . 'style.css');
 
@@ -57,7 +58,7 @@ $linkTopicB = $linkTopic . $topicIdB;
 $smarty->assign('linkTB',$linkTopicB);
 
 $home = $_SERVER['SCRIPT_NAME'];
-$home = 'http://127.0.0.1' . $home;
+$home = 'http://127.0.0.1' . $home;//此处需要更改，否则再其他地方使用时会出现错误。
 $smarty->assign('home',$home);
 
 $smarty->assign('pre',$pre);
@@ -75,7 +76,7 @@ $pres = dirname(dirname(dirname($_SERVER['SCRIPT_NAME']))) . '/meinv/';
 foreach($TopicData as $k=>$v)
 {	
 	$headerTopic = $linkTopic . $v['id'];
-	$replace = $pres . $v['id'];
+	$replace = $pres . $v['id'] . '/index_1.html';
 	$info = str_replace($headerTopic,$replace,$info);
 }
 

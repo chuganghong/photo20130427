@@ -87,7 +87,7 @@ $upres = dirname(dirname(dirname($_SERVER['SCRIPT_NAME']))) . '/meinv/';
 $prep = $currentPage;
 /**
  * 由于我解决不了分页符中的第一页链接为'pic_2.html'的问题，只能用'pic_2_1.html'，故
- * 将pic.php生成的HTML文件也命令为与分页符吻合的文件名.
+ * 将pic.php生成的HTML文件也命名为与分页符吻合的文件名.
  * 使用了preg_replace($pattern,$replacement,$subject)解决分页符替换问题，故不需要此段代码
  
 if($pre1==1)
@@ -106,7 +106,7 @@ else
 $homeTopic = array($home,$topic);
 $homeTopicR = array(
 					$upres . 'index_b.html',
-					$upres . $topicId . '/'
+					$upres . $topicId . '/index_1.html'
 					);  //替换数据
 $info = str_replace($homeTopic,$homeTopicR,$info);
 
@@ -148,7 +148,7 @@ foreach($CRecAlbums as $v)
 foreach($TopicData as $k=>$v)
 {
 	$headerTopic = $linkTopic . $v['id'];
-	$replace = $upres . $v['id'];
+	$replace = $upres . $v['id'] . '/index_1.html';
 	$info = str_replace($headerTopic,$replace,$info);
 }
 

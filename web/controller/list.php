@@ -33,7 +33,8 @@ $pageString = $page->display('B');
 $linkPic = dirname($_SERVER['SCRIPT_NAME']) .'/pic.php?topicId=' . $topicId . '&albumId=';
 $smarty->assign('linkPic',$linkPic);
 
-$pre = '/GitHub/photo20130427/web/templates/style/';
+//$pre = '/GitHub/photo20130427/web/templates/style/';
+$pre = dirname(dirname($_SERVER['SCRIPT_NAME'])) . '/templates/style/';
 $smarty->assign('pageStr',$pageString);
 $smarty->assign('pre',$pre);
 
@@ -65,7 +66,7 @@ $pres = dirname(dirname(dirname($_SERVER['SCRIPT_NAME']))) . '/meinv/';
 foreach($TopicData as $k=>$v)
 {
 	$headerTopic = $linkTopic . $v['id'];
-	$replace = $pres . $v['id'];
+	$replace = $pres . $v['id'] . '/index_1.html';
 	$info = str_replace($headerTopic,$replace,$info);
 }
 
@@ -75,7 +76,7 @@ $replace2 = $pres . 'index.html';
 $info = str_replace($search2,$replace2,$info);
 $search3 = $topic;
 $replace3 = $pres . $topicId . '/';
-$info = str_replace($search3,$replace3,$info);
+//$info = str_replace($search3,$replace3,$info);
 
 //图集列表链接
 //{$linkPic}{$ANA[album]["id"]}
@@ -93,18 +94,24 @@ $pattern = '/<li><a href=".*?page=(\d+)">(.*?)<\/a><\/li>/s';
 $replacement = '<li><a href="' . $pres . $topicId . '/index_${1}.html">${2}</a></li>';
 $pageString2 = preg_replace($pattern,$replacement,$pageString);
 preg_match_all($pattern,$pageString,$matches20);//test
-var_dump($matches20);//test
+//var_dump($matches20);//test
+//echo $pageString2;//test
+//echo htmlspecialchars($pageString2);//test
 
-echo $pageString2;//test
-echo htmlspecialchars($pageString2);//test
-
-$info = str_replace($pageString,$pageString2,$info);
-echo '<hr>';
-echo htmlspecialchars($info);//test
+//$info = str_replace($pageString,$pageString2,$info);//不知为何，此句出错，我无力解决，用preg_replace()代替此句
+$pattern = '/<div class="page">.*?<\/div>/s';//正则表达式的修饰符s很重要，它表示.可以匹配换行符等
+//preg_match_all($pattern,$info,$matches333);//test
+//var_dump($matches333);  //test
+$info = preg_replace($pattern,$pageString2,$info);//替换上面的str_replace()语句
+//echo $info;
+//echo htmlspecialchars($info);//test
 
 
 //推荐美女链接HTML化
 $dir = dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/meinv/' . $topicId . '/';
+/**
+ * 为了配合preg_replace($pattern,$replacement,$subject)对列表HTML文件的命名，改变列表首页的命名
+ 
 if($currentPage==1)
 {
 	$filename = $dir . 'index.html';
@@ -113,6 +120,8 @@ else
 {
 	$filename = $dir . 'index_' . $currentPage . '.html';
 }
+*/
+$filename = $dir . 'index_' . $currentPage . '.html';
 
 $fp=fopen($filename,'wb');
 fwrite($fp,$info);
