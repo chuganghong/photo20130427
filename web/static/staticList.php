@@ -1,50 +1,24 @@
 <?php
-/*
- * 栏目下的图集列表页
+/**
+ * 初始化list.php的代码，包含在listStatic.php，存在大量与list.php中相同的代码。我不想
+ * 这么写listStatic.php中的代码，但是我无法复用list.php中的代码。
+ * 2013年7月6日 11点24分
  */
-//过滤用户输入。此种代码不好，会产生大量冗余代码
-//开始对用户输入的GET值进行过滤：若恶意用户输入非期望值，跳转到首页
-if( !isset($_GET['topicId']) )
-{
-	Header('Location:' . dirname($_SERVER['SCRIPT_NAME']) . '/index_b.php');
-}
-if( !is_int(intval($_GET['topicId'])) || ($_GET['topicId']<=0 ) || ($_GET['topicId']>20) || !ctype_digit($_GET['topicId']) )
-{
-	Header('Location:' . dirname($_SERVER['SCRIPT_NAME']) . '/index_b.php');
-}
-//结束对用户输入的GET值进行过滤
 
-require('../common/include.php');
+//require('../common/include.php');
 
+var_dump(get_include_path());  //test
 $tpl = dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/templates/';
-
-
-$num = 24;   //控制列表页显示的图集数量
-
-require('albumListData.php'); //所需要的数据
-//require('RecommendAlbum.class.php');//此文件为其他获取数据的基础.在albumListData.php中包含了此文件
-require('header.php');  //提供topicData（显示栏目名称）等数据
-require('Page.class.php');   //分页符
-
-if(class_exists('PageList'))
-{
-	print 'Exists';
-	//exit('Exists');
-}
-else
-{
-	print 'Not exists';
-	//exit('Not exists');
-}
 
 $linkPage = $_SERVER['SCRIPT_NAME'] . '?topicId=' . $topicId . '&page=';
 $page = new PageList($currentPage,$sum,$linkPage);
 $pageString = $page->display('B');
 
+
 $linkPic = dirname($_SERVER['SCRIPT_NAME']) .'/pic.php?topicId=' . $topicId . '&albumId=';
 $smarty->assign('linkPic',$linkPic);
 
-//$pre = '/GitHub/photo20130427/web/templates/style/';
+
 $pre = dirname(dirname($_SERVER['SCRIPT_NAME'])) . '/templates/style/';
 $smarty->assign('pageStr',$pageString);
 $smarty->assign('pre',$pre);
@@ -68,12 +42,6 @@ $smarty->assign('topic',$topic);
 
 //网站静态化代码
 $info = $smarty->fetch($tpl . 'list.tpl');
-
-//控制是否静态化，是否输出
-if(!isset($isStatic))
-{
-	echo $info;
-}
 
 $pres = dirname(dirname(dirname($_SERVER['SCRIPT_NAME']))) . '/meinv/';
 
@@ -126,16 +94,16 @@ $info = preg_replace($pattern,$pageString2,$info);//替换上面的str_replace()
 $dir = dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/meinv/' . $topicId . '/';
 /**
  * 为了配合preg_replace($pattern,$replacement,$subject)对列表HTML文件的命名，改变列表首页的命名
- 
-if($currentPage==1)
-{
-	$filename = $dir . 'index.html';
-}
-else
-{
-	$filename = $dir . 'index_' . $currentPage . '.html';
-}
-*/
+
+ if($currentPage==1)
+ {
+ $filename = $dir . 'index.html';
+ }
+ else
+ {
+ $filename = $dir . 'index_' . $currentPage . '.html';
+ }
+ */
 $filename = $dir . 'index_' . $currentPage . '.html';
 
 $fp=fopen($filename,'wb');

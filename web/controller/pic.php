@@ -78,7 +78,13 @@ $smarty->assign('topic',$topic);
 
 //将动态网页静态化
 $info = $smarty->fetch($tpl . 'pic.tpl');
-echo $info;
+
+
+//控制是否静态化，是否输出
+if(!isset($isStatic))
+{
+	echo $info;
+}
 
 $pres = dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME']))) . '/meinv/';
 $upres = dirname(dirname(dirname($_SERVER['SCRIPT_NAME']))) . '/meinv/';

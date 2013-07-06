@@ -4,6 +4,10 @@ set_include_path(get_include_path() . PATH_SEPARATOR . SITE . '/admin/model');
 set_include_path(ini_get('include_path') . PATH_SEPARATOR . SITE . '/web/model');
 set_include_path(get_include_path() . PATH_SEPARATOR . SITE . '/lib');
 
+set_include_path(get_include_path() . PATH_SEPARATOR . SITE . '/web/static');
+
+ini_set('include_path',get_include_path() . PATH_SEPARATOR . SITE . '/web/controller');
+
 require('db.class.php');
 require('Smarty.class.php');
 $host = 'localhost';

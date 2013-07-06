@@ -1,5 +1,5 @@
 <?php
-require('../common/include.php');
+require(dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/common/include.php');
 require('getAlbumInfo_b.php');
 
 $tpl = dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/templates/';
@@ -67,7 +67,10 @@ $smarty->assign('tpl',$tpl);
 //静态化操作
 $info = $smarty->fetch($tpl . 'index1.tpl');
 
-echo $info;
+if(!isset($isStatic))
+{
+	echo $info;
+}
 
 $pres = dirname(dirname(dirname($_SERVER['SCRIPT_NAME']))) . '/meinv/';
 
