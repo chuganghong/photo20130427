@@ -229,12 +229,25 @@ EOT;
 	{
 		$str = '';
 		$deadLine = 5;
-		if( $this->currentPage<$deadLine )
+		if( $this->currentPage<=$deadLine )
 		{
 			$end = 10;
-			for($i=1;$i<=$end;$i++)
+			for($i=1;$i<$end;$i++)
 			{
 				if($i==$this->sum):
+				if($this->currentPage==$i)
+				{
+					$str .= <<<EOT
+<li class="current">$i</li>
+EOT;
+				}
+				else
+				{
+					$link = $this->link . $i;
+					$str .= <<<EOT
+<li><a href="$link">$i</a></li>
+EOT;
+				}
 					break;
 				endif;
 				if($this->currentPage==$i)

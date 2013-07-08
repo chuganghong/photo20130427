@@ -25,7 +25,7 @@ require('search.php');   //实现首页搜索功能的model部分
 
 
 require('header.php');  //提供topicData（显示栏目名称）等数据
-require('Page.class.php');   //分页符
+require('PageW.class.php');   //分页符
 
 
 

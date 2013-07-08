@@ -38,15 +38,7 @@ function addFavorite()
         	<li><a href="{$home}">首页</a></li>
         	{section name=topic loop=$TopicData}
         		<li><a href="{$linkTopic}{$TopicData[topic]["id"]}">{$TopicData[topic]["topicName"]}</a></li>
-           	{/section}
-           	<!--
-            <li><a href="#">美女图片</a></li>
-            <li><a href="#">美女写真</a></li>
-            <li><a href="#">丝袜美女</a></li>
-            <li><a href="#">明星模特</a></li>
-            <li><a href="#">日韩美女</a></li>
-            <li><a href="#">动漫美女</a></li>
-            -->
+           	{/section}           
         </ul>
     </div>
 </div>

@@ -24,18 +24,7 @@ $num = 24;   //控制列表页显示的图集数量
 require('albumListData.php'); //所需要的数据
 //require('RecommendAlbum.class.php');//此文件为其他获取数据的基础.在albumListData.php中包含了此文件
 require('header.php');  //提供topicData（显示栏目名称）等数据
-require('Page.class.php');   //分页符
-
-if(class_exists('PageList'))
-{
-	print 'Exists';
-	//exit('Exists');
-}
-else
-{
-	print 'Not exists';
-	//exit('Not exists');
-}
+require('PageW.class.php');   //分页符
 
 $linkPage = $_SERVER['SCRIPT_NAME'] . '?topicId=' . $topicId . '&page=';
 $page = new PageList($currentPage,$sum,$linkPage);
@@ -106,12 +95,15 @@ foreach($ANewAlbums as $v4)
 //分页符链接HTML化，用preg_replace($pattern,$replacement,$subject)
 //<li><a href="/GitHub/photo20130427/web/controller/list.php?topicId=2&amp;page=1"><span>首页</span></a></li>
 $pattern = '/<li><a href=".*?page=(\d+)">(.*?)<\/a><\/li>/s';
-$replacement = '<li><a href="' . $pres . $topicId . '/index_${1}.html">${2}</a></li>';
-$pageString2 = preg_replace($pattern,$replacement,$pageString);
+
 preg_match_all($pattern,$pageString,$matches20);//test
-//var_dump($matches20);//test
+var_dump($matches20);//test
 //echo $pageString2;//test
 //echo htmlspecialchars($pageString2);//test
+
+$replacement = '<li><a href="' . $pres . $topicId . '/index_${1}.html">${2}</a></li>';
+$pageString2 = preg_replace($pattern,$replacement,$pageString);
+
 
 //$info = str_replace($pageString,$pageString2,$info);//不知为何，此句出错，我无力解决，用preg_replace()代替此句
 $pattern = '/<div class="page">.*?<\/div>/s';//正则表达式的修饰符s很重要，它表示.可以匹配换行符等

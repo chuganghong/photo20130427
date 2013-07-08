@@ -2,12 +2,12 @@
 /**
  * 初始化list.php的代码，包含在listStatic.php，存在大量与list.php中相同的代码。我不想
  * 这么写listStatic.php中的代码，但是我无法复用list.php中的代码。
- * 2013年7月6日 11点24分
+ * 2013年7月6日 11点24分---14点16分完成。这个文件全部是冗余代码，是从albumListData.php节选而来的。
  */
 
 //require('../common/include.php');
 
-var_dump(get_include_path());  //test
+//var_dump(get_include_path());  //test
 $tpl = dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/templates/';
 
 $linkPage = $_SERVER['SCRIPT_NAME'] . '?topicId=' . $topicId . '&page=';
